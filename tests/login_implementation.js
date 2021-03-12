@@ -17,7 +17,7 @@ step("Open the amazon account of <user>", async function(user){
   let page = await test.createPage();
   let amazonLogin = new AmazonLoginPage(page);
 
-  await amazonLogin.open();
+  await amazonLogin.open(process.env.LOGIN_URL);
 
   await amazonLogin.setUsername(user)
   await amazonLogin.clickToContinue()
