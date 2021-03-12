@@ -1,0 +1,12 @@
+{
+  "name": "gauge-js-template",
+  "description": "Starter template for writing JavaScript tests for Gauge",
+  "scripts": {
+    "test": "gauge run specs/"
+  },
+  "dependencies": {
+    "@getgauge/cli": "^1.1.7",
+    "dotenv": "^8.2.0",
+    "puppeteer": "^8.0.0"
+  }
+}
