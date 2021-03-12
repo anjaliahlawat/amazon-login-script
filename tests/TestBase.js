@@ -3,6 +3,7 @@ const puppeteer = require('puppeteer');
 module.exports = class TestBase {
   constructor(){
     this.browser = ""
+    this.count = 1
   }
   async createPage(){
     this.browser = await puppeteer.launch();     
@@ -13,6 +14,6 @@ module.exports = class TestBase {
   }
 
   async takeScreenShot(page){
-    await page.screenshot({ path: 'reports/screenshots/example.png' });
+    await page.screenshot({ path: `reports/screenshots/example${this.count++}.png` });
  }
 }
