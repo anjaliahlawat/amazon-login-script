@@ -11,4 +11,8 @@ module.exports = class TestBase {
   async cleanup(){
     await this.browser.close();
   }
+
+  async takeScreenShot(page){
+    await page.screenshot({ path: 'reports/screenshots/example.png' });
+ }
 }

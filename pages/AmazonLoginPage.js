@@ -4,8 +4,8 @@ module.exports =class AmazonLoginPage {
      this.page = page
    }
 
-   async open(){
-      await this.page.goto('https://www.amazon.in/ap/signin?ie=UTF8&openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Fwww.amazon.in%2Fyour-account%3Fref_%3Dnav_signin&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.assoc_handle=inflex&openid.mode=checkid_setup&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0&switch_account=signin&ignoreAuthState=1&disableLoginPrepopulate=1&ref_=ap_sw_aa', {
+   async open(url){
+      await this.page.goto(url, {
         waitUntil: "domcontentloaded",
       });
    }
@@ -19,27 +19,22 @@ module.exports =class AmazonLoginPage {
    }
 
    async clickToContinue(){
-      await Promise.all([
-        this.page.waitForNavigation(),
-        await this.page.click("#continue")
-      ]) 
+      await this.navigate("#continue")
    }
 
    async clickToSignIn(){
-      await Promise.all([
-        this.page.waitForNavigation(),
-        await this.page.click("#signInSubmit")
-      ])
+      await this.navigate("#signInSubmit")
    }
 
-   async areUrlEqual(){
-      let expectedUrl = "https://www.amazon.in/your-account?ref_=nav_signin&";
+   async areUrlEqual(expectedUrl){
       let actualUrl = await this.page.url();
-
-      return true ? expectedUrl === actualUrl : false
+      return expectedUrl === actualUrl
    }
 
-   async takeScreenShot(){
-      await this.page.screenshot({ path: 'example.png' });
+   async navigate(id){
+      await Promise.all([
+         this.page.waitForNavigation(),
+         await this.page.click(id)
+       ])
    }
 }
