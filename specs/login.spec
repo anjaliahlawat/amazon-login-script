@@ -1,6 +1,6 @@
 # Login in amazon
-the user can login in the amazon account
+Automated testing to check if user logged in successfully
 
 ## Successful Login
 
-* The required username is "9654081639"
+* Open the amazon account of "9654081639"
