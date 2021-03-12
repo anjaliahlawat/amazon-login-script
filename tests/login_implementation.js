@@ -1,45 +1,35 @@
 "use strict";
 
 var assert = require("assert");
+const dotenv = require('dotenv');
 
+const TestBase = require("./TestBase")
+const AmazonLoginPage = require("../pages/AmazonLoginPage")
+
+dotenv.config();
 
 // --------------------------
 // Gauge step implementations
 // --------------------------
 
-step("The required username is <user>", function(username, user)){
-  assert.equal(username, user);
-}
+step("Open the amazon account of <user>", async function(user){
+  let test = new TestBase();
+  let page = await test.createPage();
+  let amazonLogin = new AmazonLoginPage(page);
 
-step("The length of <username> is <number>", function(number)){
-  assert.strictEqual(number, 10)
-}
+  await amazonLogin.open(process.env.LOGIN_URL);
 
+  await amazonLogin.setUsername(user)
+  await amazonLogin.clickToContinue()
+  
+  await amazonLogin.setPassword(process.env.SECRET_KEY)
+  await amazonLogin.clickToSignIn()
+  
+  await amazonLogin.takeScreenShot();
 
-step("Valid username.", function(username) {  
-   assert.ok(username.length >= 10)
+  let expectedUrl = "https://www.amazon.in/your-account?ref_=nav_signin&"
+  assert.ok(await amazonLogin.areUrlEqual(expectedUrl))
 
-   if(/^\d+$/.test(username)){
-     assert.ok(username.length === 10) 
-     assert.match(username, /^[0-9]+$/);
-   }
-   else{
-     assert.ok(validateEmail(username))
-   }
-});
+  await test.cleanup()
+})
 
-//check if password is atleast of 6 characters
-step("Valid password.", function(password) {  
-    assert.ok(password.length >= 6) 
-});
-
-//check if password is valid - a combination of alphanumeric characters
-step("Valid password.", function(password) {  
-  assert.match(password, /^[0-9a-zA-Z]+$/);
-});
-
-//helper functions
-function validateEmail(email) {
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-}
