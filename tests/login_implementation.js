@@ -26,7 +26,8 @@ step("Open the amazon account of <user>", async function(user){
   await amazonLogin.clickToSignIn()
   
   await amazonLogin.takeScreenShot();
-  assert.ok(await amazonLogin.areUrlEqual())
+  let expectedUrl = "https://www.amazon.in/your-account?ref_=nav_signin&"
+  assert.ok(await amazonLogin.areUrlEqual(expectedUrl))
 
   await test.cleanup()
 })
