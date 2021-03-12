@@ -32,11 +32,9 @@ module.exports =class AmazonLoginPage {
       ])
    }
 
-   async areUrlEqual(){
-      let expectedUrl = "https://www.amazon.in/your-account?ref_=nav_signin&";
+   async areUrlEqual(expectedUrl){
       let actualUrl = await this.page.url();
-
-      return true ? expectedUrl === actualUrl : false
+      return expectedUrl === actualUrl
    }
 
    async takeScreenShot(){
