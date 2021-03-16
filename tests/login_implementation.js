@@ -17,7 +17,8 @@ step("Open the amazon account of <user>", async function(user){
   let page = await test.createPage();
   let amazonLogin = new AmazonLoginPage(page);
 
-  await amazonLogin.open(process.env.LOGIN_URL);
+  await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
+  await amazonLogin.signIn()
 
   await amazonLogin.setUsername(user)
   await amazonLogin.clickToContinue()
@@ -27,7 +28,7 @@ step("Open the amazon account of <user>", async function(user){
   
   await test.takeScreenShot(page);
 
-  let expectedUrl = "https://www.amazon.in/your-account?ref_=nav_signin&"
+  let expectedUrl = "https://www.amazon.in/?ref_=nav_ya_signin&"
   assert.ok(await amazonLogin.areUrlEqual(expectedUrl))
 
   await test.cleanup()
