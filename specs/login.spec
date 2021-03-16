@@ -1,6 +1,13 @@
 # Login in amazon
 Automated testing to check if user logged in successfully
 
-## Successful Login
+## Amazon Login
 
-* Open the amazon account of "9654081639"
+* Open amazon website
+* Enter "username" as "9654081639"
+* Enter "password"
+* Verify if final url is "https://www.amazon.in/?ref_=nav_ya_signin&"
+
+
+
+

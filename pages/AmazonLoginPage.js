@@ -30,9 +30,8 @@ module.exports=class AmazonLoginPage {
       await this.clickAndWaitForNavigation("#signInSubmit")
    }
 
-   async areUrlEqual(expectedUrl){
-      let actualUrl = await this.page.url();
-      return expectedUrl === actualUrl
+   async getUrl(expectedUrl){
+      return await this.page.url();
    }
 
    async clickAndWaitForNavigation(id){

@@ -2,35 +2,44 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
+dotenv.config();
 
 const TestBase = require("./TestBase")
 const AmazonLoginPage = require("../pages/AmazonLoginPage")
 
-dotenv.config();
+let test = new TestBase();
+let page = await test.createPage();
+let amazonLogin = new AmazonLoginPage(page);
+
 
 // --------------------------
 // Gauge step implementations
 // --------------------------
 
-step("Open the amazon account of <user>", async function(user){
-  let test = new TestBase();
-  let page = await test.createPage();
-  let amazonLogin = new AmazonLoginPage(page);
 
+step("Open amazon website", async function(){
   await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
   await amazonLogin.signIn()
-
-  await amazonLogin.setUsername(user)
-  await amazonLogin.clickToContinue()
-  
-  await amazonLogin.setPassword(process.env.SECRET_KEY)
-  await amazonLogin.clickToSignIn()
-  
-  await test.takeScreenShot(page);
-
-  let expectedUrl = "https://www.amazon.in/?ref_=nav_ya_signin&"
-  assert.ok(await amazonLogin.areUrlEqual(expectedUrl))
-
-  await test.cleanup()
 })
 
+step(["Enter <inputType> as <inputValue>", "Enter <inputType>"], async function(inputName, inputValue){
+  if(inputName === 'username'){
+    await amazonLogin.setUsername(inputValue)
+    await amazonLogin.clickToContinue()
+  }
+  else if(inputName === 'password'){
+    await amazonLogin.setPassword(process.env.SECRET_KEY)
+    await amazonLogin.clickToSignIn()
+  }
+})
+
+step("Verify if final url is <url>", async function(url){
+  let actualUrl = await amazonLogin.getUrl() 
+  assert.ok(url === actualUrl)
+})
+
+
+afterSpec(async function () {
+  await test.takeScreenShot(page);
+  await test.cleanup()
+})
