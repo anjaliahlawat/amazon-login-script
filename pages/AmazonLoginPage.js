@@ -1,13 +1,17 @@
 
-module.exports =class AmazonLoginPage {
+module.exports=class AmazonLoginPage {
    constructor(page){
      this.page = page
    }
 
-   async open(url){
+   async openAmazonWebsite(url){
       await this.page.goto(url, {
-        waitUntil: "domcontentloaded",
-      });
+        waitUntil: "networkidle0",
+      })
+   }
+
+   async signIn(){
+      this.page.click("#nav-link-accountList")
    }
 
    async setUsername(username){
@@ -19,11 +23,11 @@ module.exports =class AmazonLoginPage {
    }
 
    async clickToContinue(){
-      await this.navigate("#continue")
+      await this.clickAndWaitForNavigation("#continue")
    }
 
    async clickToSignIn(){
-      await this.navigate("#signInSubmit")
+      await this.clickAndWaitForNavigation("#signInSubmit")
    }
 
    async areUrlEqual(expectedUrl){
@@ -31,7 +35,7 @@ module.exports =class AmazonLoginPage {
       return expectedUrl === actualUrl
    }
 
-   async navigate(id){
+   async clickAndWaitForNavigation(id){
       await Promise.all([
          this.page.waitForNavigation(),
          await this.page.click(id)
