@@ -2,9 +2,10 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
-dotenv.config();
 var TestBase = require("./TestBase")
 var AmazonLoginPage = require("../pages/AmazonLoginPage")
+
+dotenv.config();
 var test = {}
 var page = {}
 var amazonLogin = {}
@@ -33,6 +34,9 @@ step("Verify if final url is <url>", async function(url){
   let actualUrl = await amazonLogin.getUrl() 
   assert.ok(url === actualUrl)
 })
+step("Verify element <id> after logged in", async function(id) {
+  assert.ok(await amazonLogin.checkIfElementExist(id))
+});
 
 beforeSpec(async function () { 
   test = new TestBase();

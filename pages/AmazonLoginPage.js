@@ -40,4 +40,8 @@ module.exports=class AmazonLoginPage {
          await this.page.click(id)
        ])
    }
+
+   async checkIfElementExist(id){
+      return await this.page.$(`#${id}`) ? true : false
+   }
 }
