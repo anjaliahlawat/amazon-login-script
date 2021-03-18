@@ -30,7 +30,7 @@ module.exports=class AmazonLoginPage {
       await this.clickAndWaitForNavigation("#signInSubmit")
    }
 
-   async getUrl(expectedUrl){
+   async getUrl(){
       return await this.page.url();
    }
 

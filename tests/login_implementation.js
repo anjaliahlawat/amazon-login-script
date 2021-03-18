@@ -2,12 +2,9 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
-var TestBase = require("./TestBase")
-var AmazonLoginPage = require("../pages/AmazonLoginPage")
 
+var AmazonLoginPage = require("../pages/AmazonLoginPage");
 dotenv.config();
-var test = {}
-var page = {}
 var amazonLogin = {}
 
 // --------------------------
@@ -15,7 +12,7 @@ var amazonLogin = {}
 // --------------------------
 
 step("Open amazon website", async function(){
-  amazonLogin = new AmazonLoginPage(page);
+  amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"));
   await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
   await amazonLogin.signIn()
 })
@@ -38,13 +35,4 @@ step("Verify element <id> after logged in", async function(id) {
   assert.ok(await amazonLogin.checkIfElementExist(id))
 });
 
-beforeSpec(async function () { 
-  test = new TestBase();
-  page = await test.createPage();
-})
 
-
-afterSpec(async function () {
-  await test.takeScreenShot(page);
-  await test.cleanup()
-})
