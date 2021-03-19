@@ -5,7 +5,7 @@ name: Qa login script
 
 on:
   push:
-    branches: [ main ]
+    branches: [ disabled ]
 
 jobs:
   build:
