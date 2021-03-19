@@ -2,7 +2,7 @@
   "name": "gauge-js-template",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "gauge run specs/"
+    "test": "./node_modules/.bin/gauge run -p specs/"
   },
   "dependencies": {
     "@getgauge/cli": "^1.1.7",

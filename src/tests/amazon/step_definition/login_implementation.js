@@ -1,10 +1,9 @@
 "use strict";
 
 var assert = require("assert");
-const dotenv = require('dotenv');
+const { checkIfElementExist } = require("../../../lib/helper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage");
 
-dotenv.config();
 var amazonLogin = {}
 
 // --------------------------
@@ -16,7 +15,7 @@ beforeSpec(async () => {
 });
 
 step("Open amazon website", async function(){
-  await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
+  await amazonLogin.visitAmazonHome();
   await amazonLogin.signIn()
 })
 
@@ -26,7 +25,7 @@ step("Enter username as <user>", async function(user){
 })
 
 step("Enter password", async function(){
-  await amazonLogin.setPassword(process.env.SECRET_KEY) 
+  await amazonLogin.setPassword() 
 })
 
 step("Click to sign in", async function() {
@@ -37,6 +36,7 @@ step("Verify if final url is <url>", async function(url){
   let actualUrl = await amazonLogin.getUrl() 
   assert.ok(url === actualUrl)
 })
+
 step("Verify text <text> label is visible", async function(text) {
-  assert.ok(await amazonLogin.checkIfElementExist(text))
+  assert.ok(await amazonLogin.isTextVisible(text))
 });
