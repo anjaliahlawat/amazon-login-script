@@ -41,7 +41,7 @@ module.exports=class AmazonLoginPage {
        ])
    }
 
-   async checkIfElementExist(id){
-      return await this.page.$(`#${id}`) ? true : false
+   async checkIfElementExist(text){
+      return await this.page.$x(`(//*[text()="${text}"])`) ? true : false
    }
 }

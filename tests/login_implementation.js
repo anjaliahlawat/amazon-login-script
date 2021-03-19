@@ -23,16 +23,17 @@ step("Enter username as <user>", async function(user){
 })
 
 step("Enter password", async function(){
-  await amazonLogin.setPassword(process.env.SECRET_KEY)
-  await amazonLogin.clickToSignIn()
+  await amazonLogin.setPassword(process.env.SECRET_KEY) 
+})
+
+step("Click to sign in", async function() {
+	await amazonLogin.clickToSignIn()
 })
 
 step("Verify if final url is <url>", async function(url){
   let actualUrl = await amazonLogin.getUrl() 
   assert.ok(url === actualUrl)
 })
-step("Verify element <id> after logged in", async function(id) {
-  assert.ok(await amazonLogin.checkIfElementExist(id))
+step("Verify text <text> label is visible", async function(text) {
+  assert.ok(await amazonLogin.checkIfElementExist(text))
 });
-
-
