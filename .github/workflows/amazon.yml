@@ -25,5 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AMAZON_URL: ${{ secrets.AMAZON_URL }}
     - run: yarn 
     - run: yarn test
