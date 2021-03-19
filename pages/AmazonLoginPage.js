@@ -42,6 +42,7 @@ module.exports=class AmazonLoginPage {
    }
 
    async checkIfElementExist(text){
-      return await this.page.$x(`(//*[text()="${text}"])`) ? true : false
+      let textArr = await this.page.$x(`(//*[text()="${text}"])`) 
+      return textArr.length > 0
    }
 }

@@ -8,7 +8,7 @@ Automated testing to check if user logged in successfully
 * Enter password
 * Click to sign in
 * Verify if final url is "https://www.amazon.in/?ref_=nav_ya_signin&"
-* Verify text "Hi, Anjali" label is visible
+* Verify text "ElementNotPresent" label is visible
 
 
 

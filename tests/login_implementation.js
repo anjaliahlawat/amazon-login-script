@@ -2,8 +2,8 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
-
 var AmazonLoginPage = require("../pages/AmazonLoginPage");
+
 dotenv.config();
 var amazonLogin = {}
 
@@ -11,8 +11,11 @@ var amazonLogin = {}
 // Gauge step implementations
 // --------------------------
 
-step("Open amazon website", async function(){
+beforeSpec(async () => {
   amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"));
+});
+
+step("Open amazon website", async function(){
   await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
   await amazonLogin.signIn()
 })
