@@ -15,7 +15,7 @@ module.exports=class AmazonLoginPage {
    }
 
    async signIn(){
-      await this.clickAndWaitForNavigation(this.page, "#nav-link-accountList")
+      await clickAndWaitForNavigation(this.page, "#nav-link-accountList")
    }
 
    async setUsername(username){

@@ -1,8 +1,7 @@
 "use strict";
 
-var assert = require("assert");
-const { checkIfElementExist } = require("../../../lib/helper");
-var AmazonLoginPage = require("../pages/AmazonLoginPage");
+var assert = require("assert")
+var AmazonLoginPage = require("../pages/AmazonLoginPage")
 
 var amazonLogin = {}
 
@@ -11,11 +10,11 @@ var amazonLogin = {}
 // --------------------------
 
 beforeSpec(async () => {
-  amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"));
-});
+  amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"))
+})
 
 step("Open amazon website", async function(){
-  await amazonLogin.visitAmazonHome();
+  await amazonLogin.visitAmazonHome()
   await amazonLogin.signIn()
 })
 
@@ -39,4 +38,4 @@ step("Verify if final url is <url>", async function(url){
 
 step("Verify text <text> label is visible", async function(text) {
   assert.ok(await amazonLogin.isTextVisible(text))
-});
+})

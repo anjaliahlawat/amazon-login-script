@@ -12,7 +12,7 @@ beforeSpec(async () => {
 });
 
 step("Open amazon login page", async function() {
-	await amazonLogin.openAmazonWebsite(process.env.AMAZON_URL);
+	await amazonLogin.visitAmazonHome();
     await amazonLogin.signIn()
 });
 
@@ -22,6 +22,6 @@ step("Enter username <user>", async function(user) {
 });
 
 step("Check if username <user> is visible", async function(user) {
-	assert.ok(await amazonLogin.checkIfElementExist(user))
+	assert.ok(await amazonLogin.isTextVisible(user))
 });
 
