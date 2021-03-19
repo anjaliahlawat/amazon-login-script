@@ -33,12 +33,4 @@ module.exports=class AmazonLoginPage {
    async clickToSignIn(){
       await helper.clickAndWaitForNavigation(this.page, "#signInSubmit")
    }
-
-   // async getUrl(){
-   //    return await helper.getUrl(this.page);
-   // }
-
-   // async isTextVisible(text){
-   //    return await helper.checkIfTextExist(this.page, text);
-   // }
 }
