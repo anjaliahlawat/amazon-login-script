@@ -1,6 +1,7 @@
 "use strict";
 
-var assert = require("assert")
+var assert = require("assert");
+const helper = require("../../../lib/helper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage")
 
 var amazonLogin = {}
@@ -32,10 +33,10 @@ step("Click to sign in", async function() {
 })
 
 step("Verify if final url is <url>", async function(url){
-  let actualUrl = await amazonLogin.getUrl() 
+  let actualUrl = await helper.getUrl(amazonLogin.page) 
   assert.ok(url === actualUrl)
 })
 
 step("Verify text <text> label is visible", async function(text) {
-  assert.ok(await amazonLogin.isTextVisible(text))
+  assert.ok(await helper.checkIfTextExist(amazonLogin.page, text))
 })

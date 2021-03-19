@@ -1,6 +1,6 @@
 const dotenv = require('dotenv');
 
-const { clickAndWaitForNavigation, getUrl, checkIfTextExist } = require("../../../lib/helper")
+const helper = require("../../../lib/helper")
 dotenv.config();
 
 module.exports=class AmazonLoginPage {
@@ -15,7 +15,7 @@ module.exports=class AmazonLoginPage {
    }
 
    async signIn(){
-      await clickAndWaitForNavigation(this.page, "#nav-link-accountList")
+      await helper.clickAndWaitForNavigation(this.page, "#nav-link-accountList")
    }
 
    async setUsername(username){
@@ -27,18 +27,18 @@ module.exports=class AmazonLoginPage {
    }
 
    async clickToContinue(){
-      await clickAndWaitForNavigation(this.page, "#continue")
+      await helper.clickAndWaitForNavigation(this.page, "#continue")
    }
 
    async clickToSignIn(){
-      await clickAndWaitForNavigation(this.page, "#signInSubmit")
+      await helper.clickAndWaitForNavigation(this.page, "#signInSubmit")
    }
 
-   async getUrl(){
-      return await getUrl(this.page);
-   }
+   // async getUrl(){
+   //    return await helper.getUrl(this.page);
+   // }
 
-   async isTextVisible(text){
-      return await checkIfTextExist(this.page, text);
-   }
+   // async isTextVisible(text){
+   //    return await helper.checkIfTextExist(this.page, text);
+   // }
 }

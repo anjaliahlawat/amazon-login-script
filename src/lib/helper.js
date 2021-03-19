@@ -1,21 +1,15 @@
-const clickAndWaitForNavigation = async (page, id)=>{
-    await Promise.all([
-       page.waitForNavigation(),
-       await page.click(id)
-     ])
+module.exports = helper = {
+    clickAndWaitForNavigation :async (page, id)=>{
+        await Promise.all([
+            page.waitForNavigation(),
+            await page.click(id)
+        ])
+    },
+    getUrl : async (page)=>{
+        return await page.url();
+    },
+    checkIfTextExist : async (page, text)=>{
+        let textArr = await page.$x(`(//*[text()="${text}"])`) 
+        return textArr.length > 0
+    }
 }
-
-const getUrl = async (page)=>{
-    return await page.url();
- }
-
-const checkIfTextExist=  async (page, text)=>{
-    let textArr = await page.$x(`(//*[text()="${text}"])`) 
-    return textArr.length > 0
- }
-
- module.exports = {
-     clickAndWaitForNavigation : clickAndWaitForNavigation,
-     getUrl : getUrl,
-     checkIfTextExist : checkIfTextExist
- }

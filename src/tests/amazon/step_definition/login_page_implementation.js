@@ -2,6 +2,7 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
+const helper = require("../../../lib/helper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage");
 
 dotenv.config();
@@ -22,6 +23,6 @@ step("Enter username <user>", async function(user) {
 });
 
 step("Check if username <user> is visible", async function(user) {
-	assert.ok(await amazonLogin.isTextVisible(user))
+	assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))
 });
 
