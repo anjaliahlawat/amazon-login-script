@@ -11,6 +11,16 @@
       "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
     }
   },
+  "commitlint": {
+    "rules": {
+      "references-empty": [2, "never"]
+    },
+    "parserPreset": {
+      "parserOpts": {
+        "issuePrefixes": ["[#-]"]
+      }
+    }
+  },
   "dependencies": {   
     "@getgauge/cli": "^1.1.7",
     "dotenv": "^8.2.0",   
