@@ -7,7 +7,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo ${HUSKY_GIT_PARAMS} ${GIT_PARAMS}"
+      "pre-commit": "echo checking commit",
+      "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
     }
   },
   "dependencies": {   
