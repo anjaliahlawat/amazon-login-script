@@ -29,4 +29,6 @@ jobs:
       run: yarn 
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        PROJECT: ${{ secrets.PROJECT }}
+    - run: cat "$PROJECT"
     - run: yarn test
