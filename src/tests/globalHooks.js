@@ -9,6 +9,6 @@ beforeSuite(async function(){
 })
 
 afterSuite(async function () {
-    await test.cleanup()
+    await test.cleanUp()
 }) 
 

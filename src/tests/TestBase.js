@@ -9,7 +9,7 @@ module.exports = class TestBase {
     this.browser = await puppeteer.launch();     
     return await this.browser.newPage();
   }  
-  async cleanup(){
+  async cleanUp(){
     await this.browser.close();
   }
 
