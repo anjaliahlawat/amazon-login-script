@@ -2,11 +2,13 @@
   "name": "gauge-js-template",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "./node_modules/.bin/gauge run -p specs/"
+    "test": "./node_modules/.bin/gauge run -p specs/",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@getgauge/cli": "^1.1.7",
     "dotenv": "^8.2.0",
+    "husky": "^5.2.0",
     "puppeteer": "^8.0.0",
     "uuid": "^8.3.2"
   }
