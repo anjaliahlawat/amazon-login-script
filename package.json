@@ -3,7 +3,12 @@
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
     "test": "./node_modules/.bin/gauge run -p specs/",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn commitlint --edit $1"
+    }
   },
   "dependencies": {
     "@getgauge/cli": "^1.1.7",
