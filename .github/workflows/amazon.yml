@@ -27,6 +27,6 @@ jobs:
       run: mv .env.sample .env  
     - name: Install dependencies
       run: yarn 
-    env:
+      env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
     - run: yarn test
