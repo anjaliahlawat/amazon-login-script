@@ -12,7 +12,7 @@ module.exports = class TestBase {
     this.browser = await puppeteer.launch({timeout : process.env.PUPPETEER_TIMEOUT});     
     return await this.browser.newPage();
   }  
-  async cleanup(){
+  async cleanUp(){
     await this.browser.close();
   }
 
