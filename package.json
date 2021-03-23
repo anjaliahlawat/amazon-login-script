@@ -2,28 +2,16 @@
   "name": "gauge-js-template",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "./node_modules/.bin/gauge run -p specs/",
-    "postinstall": "husky install"
+    "test": "./node_modules/.bin/gauge run -p specs/"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "echo checking commit",
       "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
-    }
-  },
-  "commitlint": {
-    "rules": {
-      "references-empty": [2, "never"]
-    },
-    "parserPreset": {
-      "parserOpts": {
-        "issuePrefixes": ["[#]"]
-      }
     }
   },
   "dependencies": {   
     "@getgauge/cli": "^1.1.7",
-    "dotenv": "^8.2.0",   
+    "dotenv": "^8.2.0",
     "puppeteer": "^8.0.0",
     "uuid": "^8.3.2"
   },
