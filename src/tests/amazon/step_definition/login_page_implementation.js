@@ -23,6 +23,11 @@ step("Enter username <user>", async function(user) {
 });
 
 step("Check if username <user> is visible", async function(user) {
-	assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))
+    try {
+        assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))       
+    } catch (error) {
+        if(e instanceof AssertionError)
+            await helper.takeScreenShot(amazonLogin.page)
+    }
 });
 
