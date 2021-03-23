@@ -12,7 +12,6 @@ var helper = {}
 
 beforeSpec(async () => {
   amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"))
-  helper = new Helper(gauge.dataStore.specStore.get("page"))
 })
 
 step("Open amazon website", async function(){
@@ -34,10 +33,10 @@ step("Click to sign in", async function() {
 })
 
 step("Verify if final url is <url>", async function(url){
-  let actualUrl = await helper.getUrl() 
+  let actualUrl = await amazonLogin.getUrl() 
   assert.ok(url === actualUrl)
 })
 
 step("Verify text <text> label is visible", async function(text) {
-  assert.ok(await helper.checkIfTextExist(text))
+  assert.ok(await amazonLogin.checkIfTextExist(text))
 })
