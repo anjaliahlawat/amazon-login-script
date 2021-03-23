@@ -22,7 +22,6 @@ $ yarn test
 
 ```
 
-## Additional Info
 
 
 
