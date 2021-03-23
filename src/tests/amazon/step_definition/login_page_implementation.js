@@ -2,14 +2,16 @@
 
 var assert = require("assert");
 const dotenv = require('dotenv');
-const helper = require("../../../lib/helper");
+const Helper = require("../../../lib/pageWrapper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage");
 
 dotenv.config();
 var amazonLogin = {}
+var helper = {}
 
 beforeSpec(async () => {
     amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"));
+    helper = new Helper(gauge.dataStore.specStore.get("page"))
 });
 
 step("Open amazon login page", async function() {
@@ -23,12 +25,12 @@ step("Enter username <user>", async function(user) {
 });
 
 step("Check if username <user> is visible", async function(user) {
-	assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))
+	assert.ok(await helper.checkIfTextExist(user))
 });
 
 afterSpec(async (context) => {
     var specification = context.currentSpec
     if(specification.isFailed)
-        await helper.takeScreenShot(amazonLogin.page)
+        await helper.takeScreenShot()
 })
 

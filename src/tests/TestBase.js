@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const { v4: uniqueId } = require('uuid');
 const dotenv = require('dotenv');
 
 dotenv.config();
