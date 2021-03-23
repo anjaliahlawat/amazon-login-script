@@ -26,3 +26,9 @@ step("Check if username <user> is visible", async function(user) {
 	assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))
 });
 
+afterSpec(async (context) => {
+    var specification = context.currentSpec
+    if(specification.isFailed)
+        await helper.takeScreenShot(amazonLogin.page)
+})
+

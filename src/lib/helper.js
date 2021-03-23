@@ -11,5 +11,9 @@ module.exports = helper = {
     checkIfTextExist : async (page, text)=>{
         let textArr = await page.$x(`(//*[text()="${text}"])`) 
         return textArr.length > 0
-    }
+    },
+    takeScreenShot: async(page) =>{
+        let name = uniqueId()
+        await page.screenshot({ path: `reports/screenshots/${name}.png` });
+     }
 }
