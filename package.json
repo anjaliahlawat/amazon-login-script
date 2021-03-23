@@ -4,10 +4,20 @@
   "scripts": {
     "test": "./node_modules/.bin/gauge run -p specs/"
   },
-  "dependencies": {
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
+    }
+  },
+  "dependencies": {   
     "@getgauge/cli": "^1.1.7",
     "dotenv": "^8.2.0",
     "puppeteer": "^8.0.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^12.0.1",
+    "@commitlint/cli": "^12.0.1",
+    "husky": "4"
   }
 }
