@@ -1,4 +1,4 @@
-# ** Automated Login Script **
+# Automated Login Script
 
 The script runs a script to test the following specifications:
 - Amazon login page  
