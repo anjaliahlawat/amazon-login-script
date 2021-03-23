@@ -8,7 +8,7 @@ The project uses Node library [Puppeteer](https://devdocs.io/puppeteer/) and run
 
 ## Prerequisites 
 
-Before you begin, please ensure you have the following setup in your systemas per environment of yourchoice
+Before you begin, please ensure you have the following setup in your system as per environment of your choice
 - Node.js
 - Package manager - npm or yarn
 
