@@ -1,11 +1,10 @@
 "use strict";
 
 var assert = require("assert");
-const Helper = require("../../../lib/pageWrapper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage")
 
 var amazonLogin = {}
-var helper = {}
+
 // --------------------------
 // Gauge step implementations
 // --------------------------
