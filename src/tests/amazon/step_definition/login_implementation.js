@@ -1,16 +1,21 @@
 "use strict";
 
 var assert = require("assert");
+
 var AmazonLoginPage = require("../pages/AmazonLoginPage")
+const PageWrapper = require("../../../lib/pageWrapper")
 
 var amazonLogin = {}
+var pageWrapper = {}
 
 // --------------------------
 // Gauge step implementations
 // --------------------------
 
 beforeSpec(async () => {
-  amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"))
+  let page = gauge.dataStore.specStore.get("page")
+  amazonLogin = new AmazonLoginPage(page);
+  pageWrapper = new PageWrapper(page)
 })
 
 step("Open amazon website", async function(){
@@ -32,10 +37,16 @@ step("Click to sign in", async function() {
 })
 
 step("Verify if final url is <url>", async function(url){
-  let actualUrl = await amazonLogin.getUrl() 
+  let actualUrl = await pageWrapper.getUrl() 
   assert.ok(url === actualUrl)
 })
 
 step("Verify text <text> label is visible", async function(text) {
-  assert.ok(await amazonLogin.checkIfTextExist(text))
+  assert.ok(await pageWrapper.checkIfTextExist(text))
+})
+
+afterSpec(async (context) => {
+  var specification = context.currentSpec
+  if(specification.isFailed)
+      await pageWrapper.takeScreenShot()
 })

@@ -1,9 +1,6 @@
 const puppeteer = require('puppeteer');
-const dotenv = require('dotenv');
 
-dotenv.config();
-
-module.exports = class TestBase {
+module.exports = class Setup {
   constructor(){
     this.browser = ""
   }

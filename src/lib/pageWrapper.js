@@ -1,6 +1,6 @@
 const { v4: uniqueId } = require('uuid');
 
-module.exports = class Helper {
+module.exports = class PageWrapper {
     constructor(page){
         this.page = page
     }
