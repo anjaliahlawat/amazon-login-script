@@ -1,4 +1,4 @@
-var Setup = require("./setup")
+var Setup = require("./Setup")
 var setup = {}
 var page = {}
 

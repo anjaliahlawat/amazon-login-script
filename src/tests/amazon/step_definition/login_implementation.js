@@ -3,7 +3,7 @@
 var assert = require("assert");
 
 var AmazonLoginPage = require("../pages/AmazonLoginPage")
-const PageWrapper = require("../../../lib/pageWrapper")
+const PageWrapper = require("../../../lib/PageWrapper")
 
 var amazonLogin = {}
 var pageWrapper = {}
