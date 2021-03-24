@@ -1,15 +1,17 @@
 "use strict";
 
 var assert = require("assert");
-const dotenv = require('dotenv');
-const helper = require("../../../lib/helper");
+
+const PageWrapper = require("../../../lib/pageWrapper");
 var AmazonLoginPage = require("../pages/AmazonLoginPage");
 
-dotenv.config();
 var amazonLogin = {}
+var pageWrapper = {}
 
 beforeSpec(async () => {
-    amazonLogin = new AmazonLoginPage(gauge.dataStore.specStore.get("page"));
+    let page = gauge.dataStore.specStore.get("page")
+    amazonLogin = new AmazonLoginPage(page);
+    pageWrapper = new PageWrapper(page)
 });
 
 step("Open amazon login page", async function() {
@@ -23,6 +25,7 @@ step("Enter username <user>", async function(user) {
 });
 
 step("Check if username <user> is visible", async function(user) {
-	assert.ok(await helper.checkIfTextExist(amazonLogin.page,user))
+	assert.ok(await pageWrapper.checkIfTextExist(user))
 });
+
 

@@ -1,10 +1,6 @@
 const puppeteer = require('puppeteer');
-const { v4: uniqueId } = require('uuid');
-const dotenv = require('dotenv');
 
-dotenv.config();
-
-module.exports = class TestBase {
+module.exports = class Setup {
   constructor(){
     this.browser = ""
   }
@@ -15,9 +11,4 @@ module.exports = class TestBase {
   async cleanup(){
     await this.browser.close();
   }
-
-  async takeScreenShot(page){
-    let name = uniqueId()
-    await page.screenshot({ path: `reports/screenshots/${name}.png` });
- }
 }
