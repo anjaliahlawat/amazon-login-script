@@ -2,11 +2,11 @@ var Setup = require("./setup")
 var setup = {}
 var page = {}
 
-beforeSuite(async function(){
-    setup = new Setup();
-    page = await setup.createPage();
-    gauge.dataStore.specStore.put("page", page)
-})
+beforeSuite(async () => {
+        setup = new Setup();
+        page = await setup.createPage();
+        gauge.dataStore.specStore.put("page", page);
+    })
 
 afterSpec(async (context) => {
     var specification = context.currentSpec
@@ -14,7 +14,7 @@ afterSpec(async (context) => {
         await pageWrapper.takeScreenShot()
   })
 
-afterSuite(async function (context) {
-    await setup.cleanup()
-}) 
+afterSuite(async (context) => {
+        await setup.cleanup();
+    }) 
 

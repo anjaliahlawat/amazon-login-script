@@ -12,7 +12,7 @@ var pageWrapper = {}
 // Gauge step implementations
 // --------------------------
 
-beforeSpec(async () => {
+beforeSpec(async function(){
   let page = gauge.dataStore.specStore.get("page")
   amazonLogin = new AmazonLoginPage(page);
   pageWrapper = new PageWrapper(page)

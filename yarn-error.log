@@ -1,8 +1,8 @@
 Arguments: 
-  /usr/bin/node /usr/bin/yarn run --silent husky-run commit-msg .git/COMMIT_EDITMSG
+  /usr/bin/node /usr/bin/yarn add eslint-config-airbnb —-save-dev
 
 PATH: 
-  /usr/lib/git-core:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
   1.22.10
@@ -14,34 +14,37 @@ Platform:
   linux x64
 
 Trace: 
-  SyntaxError: /home/anjali/Documents/Gauge/amazon-login-script-1/package.json: Unexpected token } in JSON at position 181
-      at JSON.parse (<anonymous>)
-      at /usr/lib/node_modules/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/lib/node_modules/yarn/lib/cli.js:310:30)
-      at /usr/lib/node_modules/yarn/lib/cli.js:321:13
+  TypeError [ERR_UNESCAPED_CHARACTERS]: Request path contains unescaped characters
+      at new ClientRequest (_http_client.js:147:13)
+      at Object.request (https.js:316:10)
+      at Request.module.exports.Request.start (/usr/lib/node_modules/yarn/lib/cli.js:141224:32)
+      at Request.module.exports.Request.end (/usr/lib/node_modules/yarn/lib/cli.js:141983:10)
+      at end (/usr/lib/node_modules/yarn/lib/cli.js:141037:14)
+      at Immediate._onImmediate (/usr/lib/node_modules/yarn/lib/cli.js:141051:7)
+      at processImmediate (internal/timers.js:461:21)
 
 npm manifest: 
   {
     "name": "gauge-js-template",
     "description": "Starter template for writing JavaScript tests for Gauge",
     "scripts": {
-      "test": "./node_modules/.bin/gauge run -p specs/",
+      "test": "./node_modules/.bin/gauge run -p specs/"
     },
     "husky": {
       "hooks": {
         "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
       }
     },
-    "dependencies": {   
+    "dependencies": {
       "@getgauge/cli": "^1.1.7",
       "dotenv": "^8.2.0",
       "puppeteer": "^8.0.0",
       "uuid": "^8.3.2"
     },
     "devDependencies": {
-      "@commitlint/config-conventional": "^12.0.1",
       "@commitlint/cli": "^12.0.1",
+      "@commitlint/config-conventional": "^12.0.1",
+      "eslint": "^7.22.0",
       "husky": "4"
     }
   }

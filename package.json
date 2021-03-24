@@ -2,7 +2,8 @@
   "name": "gauge-js-template",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "./node_modules/.bin/gauge run -p specs/"
+    "test": "./node_modules/.bin/gauge run -p specs/",
+    "lint": "eslint src/"
   },
   "husky": {
     "hooks": {
@@ -19,6 +20,10 @@
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
     "eslint": "^7.22.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.1",
     "husky": "4"
   }
 }
