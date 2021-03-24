@@ -45,8 +45,3 @@ step("Verify text <text> label is visible", async function(text) {
   assert.ok(await pageWrapper.checkIfTextExist(text))
 })
 
-afterSpec(async (context) => {
-  var specification = context.currentSpec
-  if(specification.isFailed)
-      await pageWrapper.takeScreenShot()
-})

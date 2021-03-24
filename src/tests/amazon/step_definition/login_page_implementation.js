@@ -28,10 +28,4 @@ step("Check if username <user> is visible", async function(user) {
 	assert.ok(await pageWrapper.checkIfTextExist(user))
 });
 
-afterSpec(async (context) => {
-    var specification = context.currentSpec
-    if(specification.isFailed)
-        await pageWrapper.takeScreenShot()
-  })
-
 

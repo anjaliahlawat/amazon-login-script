@@ -8,6 +8,13 @@ beforeSuite(async function(){
     gauge.dataStore.specStore.put("page", page)
 })
 
+afterSpec(async (context) => {
+    var specification = context.currentSpec
+    console.log(specification)
+    if(specification.isFailed)
+        await pageWrapper.takeScreenShot()
+  })
+
 afterSuite(async function (context) {
     await setup.cleanup()
 }) 
