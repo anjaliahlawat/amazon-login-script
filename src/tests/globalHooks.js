@@ -10,7 +10,6 @@ beforeSuite(async function(){
 
 afterSpec(async (context) => {
     var specification = context.currentSpec
-    console.log(specification)
     if(specification.isFailed)
         await pageWrapper.takeScreenShot()
   })
