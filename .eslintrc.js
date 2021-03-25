@@ -18,6 +18,7 @@ module.exports = {
     "no-console": WARNING,
     "no-await-in-loop": OFF,
     "class-methods-use-this": OFF,
+    "no-unused-vars" : WARNING
   },
   globals: {
     step: true,
