@@ -3,8 +3,13 @@
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
     "test": "./node_modules/.bin/gauge run -p specs/",
-    "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "./node_modules/.bin/eslint .",
+      "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
+    }
   },
   "dependencies": {
     "@getgauge/cli": "^1.1.7",
