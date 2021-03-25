@@ -1,31 +1,27 @@
-"use strict";
+const assert = require("assert");
 
-var assert = require("assert");
+const PageWrapper = require("../../../lib/PageWrapper");
+const AmazonLoginPage = require("../pages/AmazonLoginPage");
 
-const PageWrapper = require("../../../lib/pageWrapper");
-var AmazonLoginPage = require("../pages/AmazonLoginPage");
-
-var amazonLogin = {}
-var pageWrapper = {}
+let amazonLogin = {};
+let pageWrapper = {};
 
 beforeSpec(async () => {
-    let page = gauge.dataStore.specStore.get("page")
-    amazonLogin = new AmazonLoginPage(page);
-    pageWrapper = new PageWrapper(page)
+  const page = gauge.dataStore.specStore.get("page");
+  amazonLogin = new AmazonLoginPage(page);
+  pageWrapper = new PageWrapper(page);
 });
 
-step("Open amazon login page", async function() {
-	await amazonLogin.visitAmazonHome();
-    await amazonLogin.signIn()
+step("Open amazon login page", async () => {
+  await amazonLogin.visitAmazonHome();
+  await amazonLogin.signIn();
 });
 
-step("Enter username <user>", async function(user) {
-	await amazonLogin.setUsername(user)
-    await amazonLogin.clickToContinue()
+step("Enter username <user>", async (user) => {
+  await amazonLogin.setUsername(user);
+  await amazonLogin.clickToContinue();
 });
 
-step("Check if username <user> is visible", async function(user) {
-	assert.ok(await pageWrapper.checkIfTextExist(user))
+step("Check if username <user> is visible", async (user) => {
+  assert.ok(await pageWrapper.checkIfTextExist(user));
 });
-
-
