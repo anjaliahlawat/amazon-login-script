@@ -1,20 +1,22 @@
-var Setup = require("./setup")
-var setup = {}
-var page = {}
+const PageWrapper = require("../lib/PageWrapper");
+const Setup = require("./setup");
 
-beforeSuite(async function(){
-    setup = new Setup();
-    page = await setup.createPage();
-    gauge.dataStore.specStore.put("page", page)
-})
+let setup = {};
+let page = {};
+let pageWrapper = {};
+
+beforeSuite(async () => {
+  setup = new Setup();
+  page = await setup.createPage();
+  gauge.dataStore.specStore.put("page", page);
+});
 
 afterSpec(async (context) => {
-    var specification = context.currentSpec
-    if(specification.isFailed)
-        await pageWrapper.takeScreenShot()
-  })
+  const specification = context.currentSpec;
+  pageWrapper = new PageWrapper(page);
+  if (specification.isFailed) await pageWrapper.takeScreenShot();
+});
 
-afterSuite(async function (context) {
-    await setup.cleanup()
-}) 
-
+afterSuite(async () => {
+  await setup.cleanup();
+});

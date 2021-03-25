@@ -10,6 +10,9 @@ reports
 # Gauge - JavaScript node dependencies
 node_modules
 
+# Yarn log
+yarn-error.log
+
 # enivronment variables
 .env
 
