@@ -1,6 +1,6 @@
 const dotenv = require("dotenv");
 
-const PageWrapper = require("../../../lib/pageWrapper");
+const PageWrapper = require("../../../lib/PageWrapper");
 
 dotenv.config();
 

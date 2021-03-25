@@ -12,8 +12,8 @@ module.exports = class PageWrapper {
     ]);
   }
 
-  async getUrl() {
-    return await this.page.url();
+  getUrl() {
+    return this.page.url();
   }
 
   async checkIfTextExist(text) {

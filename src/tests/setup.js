@@ -9,7 +9,7 @@ module.exports = class Setup {
     this.browser = await puppeteer.launch({
       timeout: process.env.PUPPETEER_TIMEOUT,
     });
-    return await this.browser.newPage();
+    return this.browser.newPage();
   }
 
   async cleanup() {

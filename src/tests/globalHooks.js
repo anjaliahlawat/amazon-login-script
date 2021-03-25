@@ -1,7 +1,9 @@
+const PageWrapper = require("../lib/PageWrapper");
 const Setup = require("./setup");
 
 let setup = {};
 let page = {};
+let pageWrapper = {};
 
 beforeSuite(async () => {
   setup = new Setup();
@@ -11,9 +13,10 @@ beforeSuite(async () => {
 
 afterSpec(async (context) => {
   const specification = context.currentSpec;
+  pageWrapper = new PageWrapper(page);
   if (specification.isFailed) await pageWrapper.takeScreenShot();
 });
 
-afterSuite(async (context) => {
+afterSuite(async () => {
   await setup.cleanup();
 });

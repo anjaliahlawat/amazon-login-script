@@ -1,6 +1,6 @@
 const assert = require("assert");
 
-const PageWrapper = require("../../../lib/pageWrapper");
+const PageWrapper = require("../../../lib/PageWrapper");
 const AmazonLoginPage = require("../pages/AmazonLoginPage");
 
 let amazonLogin = {};
