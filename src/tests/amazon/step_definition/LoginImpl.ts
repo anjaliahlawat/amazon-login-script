@@ -1,12 +1,12 @@
 const assert = require("assert");
-import {Step, BeforeSpec, DataStoreFactory, DataStore} from 'gauge-ts';
-
+import { Step, BeforeSpec, DataStoreFactory, DataStore } from 'gauge-ts';
 import AmazonLoginPage from "../pages/AmazonLoginPage";
 import PageWrapper from "../../../lib/PageWrapper";
 
+
 export default class LoginImpl {
-  amazonLogin : any;
-  pageWrapper : any;
+  amazonLogin: any;
+  pageWrapper: any;
 
   @BeforeSpec()
   public async beforeSpec() {
@@ -49,4 +49,4 @@ export default class LoginImpl {
     assert.ok(await this.pageWrapper.checkIfTextExist(text));
   }
 
-};
+}
