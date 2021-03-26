@@ -1,15 +1,15 @@
 const dotenv = require("dotenv");
 
-const PageWrapper = require("../../../lib/PageWrapper");
+import PageWrapper from "../../../lib/PageWrapper";
 
 dotenv.config();
 
-let pageWrapper = {};
-
-module.exports = class AmazonLoginPage {
-  constructor(page) {
+export default class AmazonLoginPage {
+  page: any;
+  pageWrapper: any;
+  constructor(page : Object) {
     this.page = page;
-    pageWrapper = new PageWrapper(page);
+    this.pageWrapper = new PageWrapper(page);
   }
 
   async visitAmazonHome() {
@@ -19,7 +19,7 @@ module.exports = class AmazonLoginPage {
   }
 
   async signIn() {
-    await pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
+    await this.pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
   }
 
   async setUsername(username) {
@@ -31,10 +31,10 @@ module.exports = class AmazonLoginPage {
   }
 
   async clickToContinue() {
-    await pageWrapper.clickAndWaitForNavigation("#continue");
+    await this.pageWrapper.clickAndWaitForNavigation("#continue");
   }
 
   async clickToSignIn() {
-    await pageWrapper.clickAndWaitForNavigation("#signInSubmit");
+    await this.pageWrapper.clickAndWaitForNavigation("#signInSubmit");
   }
 };

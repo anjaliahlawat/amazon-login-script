@@ -9,6 +9,7 @@
   "dependencies": {
     "@getgauge/cli": "^1.1.7",
     "dotenv": "^8.2.0",
+    "gauge-ts": "^0.1.0",
     "puppeteer": "^8.0.0",
     "uuid": "^8.3.2"
   },

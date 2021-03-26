@@ -1,6 +1,7 @@
 const puppeteer = require("puppeteer");
 
-module.exports = class Setup {
+export default class Setup {
+  browser: any;
   constructor() {
     this.browser = "";
   }
