@@ -1,0 +1,8 @@
+# Gauge - log files dir
+logs
+
+# Gauge - reports dir
+reports
+
+#env setup by gauge
+env

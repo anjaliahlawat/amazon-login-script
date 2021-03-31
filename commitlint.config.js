@@ -1,4 +1,4 @@
-module.exports = Configuration = {
+const Configuration = {
   extends: ["@commitlint/config-conventional"],
 
   rules: {
@@ -10,3 +10,5 @@ module.exports = Configuration = {
     ],
   },
 };
+
+module.exports = Configuration;
