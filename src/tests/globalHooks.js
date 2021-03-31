@@ -1,5 +1,5 @@
 const PageWrapper = require("../lib/PageWrapper");
-const Setup = require("./setup");
+var Setup = require("./Setup")
 
 let setup = {};
 let page = {};
@@ -18,5 +18,5 @@ afterSpec(async (context) => {
 });
 
 afterSuite(async () => {
-  await setup.cleanup();
+  await setup.cleanUp();
 });

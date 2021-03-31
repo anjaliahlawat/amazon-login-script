@@ -3,8 +3,8 @@ const assert = require("assert");
 const AmazonLoginPage = require("../pages/AmazonLoginPage");
 const PageWrapper = require("../../../lib/PageWrapper");
 
-let amazonLogin = {};
-let pageWrapper = {};
+var amazonLogin = {}
+var pageWrapper = {}
 
 // --------------------------
 // Gauge step implementations

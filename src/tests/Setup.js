@@ -12,7 +12,7 @@ module.exports = class Setup {
     return this.browser.newPage();
   }
 
-  async cleanup() {
+  async cleanUp() {
     await this.browser.close();
   }
 };
