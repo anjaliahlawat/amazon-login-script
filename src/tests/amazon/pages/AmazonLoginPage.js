@@ -1,36 +1,40 @@
-const dotenv = require('dotenv');
+const dotenv = require("dotenv");
 
-const helper = require("../../../lib/helper")
+const PageWrapper = require("../../../lib/PageWrapper");
+
 dotenv.config();
 
-module.exports=class AmazonLoginPage {
-   constructor(page){
-     this.page = page
-   }
+let pageWrapper = {};
 
-   async visitAmazonHome(){
-      await this.page.goto(process.env.AMAZON_URL, {
-        waitUntil: "networkidle0",
-      })
-   }
+module.exports = class AmazonLoginPage {
+  constructor(page) {
+    this.page = page;
+    pageWrapper = new PageWrapper(page);
+  }
 
-   async signIn(){
-      await helper.clickAndWaitForNavigation(this.page, "#nav-link-accountList")
-   }
+  async visitAmazonHome() {
+    await this.page.goto(process.env.AMAZON_URL, {
+      waitUntil: "networkidle0",
+    });
+  }
 
-   async setUsername(username){
-      await this.page.type("#ap_email", username)
-   }
+  async signIn() {
+    await pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
+  }
 
-   async setPassword(){
-      await this.page.type("#ap_password", process.env.SECRET_KEY)
-   }
+  async setUsername(username) {
+    await this.page.type("#ap_email", username);
+  }
 
-   async clickToContinue(){
-      await helper.clickAndWaitForNavigation(this.page, "#continue")
-   }
+  async setPassword() {
+    await this.page.type("#ap_password", process.env.SECRET_KEY);
+  }
 
-   async clickToSignIn(){
-      await helper.clickAndWaitForNavigation(this.page, "#signInSubmit")
-   }
-}
+  async clickToContinue() {
+    await pageWrapper.clickAndWaitForNavigation("#continue");
+  }
+
+  async clickToSignIn() {
+    await pageWrapper.clickAndWaitForNavigation("#signInSubmit");
+  }
+};
