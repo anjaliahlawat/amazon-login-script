@@ -14,11 +14,10 @@ Before you begin, please ensure you have the following setup in your system as p
 
 ## Installation
 
-To run this project, clone the repository, open the directory and run the following commands:
+To install the dependencies for the project, clone the repository, open the directory and run the following command:
 
 ```
 $ yarn
-$ yarn test
 
 ```
 
@@ -31,14 +30,14 @@ $ yarn test
 
 ### Gauge commands to run tests  -
 
-To run single specs 
+To run a single spec
 
 ```
 gauge run <filename>
 
 ```
 
-To run all specs serially
+To run all the specs serially
 
 ```
 gauge run specs/
