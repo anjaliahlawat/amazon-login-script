@@ -9,22 +9,45 @@ The project uses Node library [Puppeteer](https://devdocs.io/puppeteer/) and run
 ## Prerequisites 
 
 Before you begin, please ensure you have the following setup in your system as per environment of your choice
-- Node.js
-- Package manager - npm or yarn
+- Node.js @v12.x - [NVM Installation](https://gist.github.com/d2s/372b5943bce17b964a79)
+- Package manager -  [Yarn](https://classic.yarnpkg.com/en/)
 
-## Installation Guide
+## Installation
 
 To run this project, clone the repository, open the directory and run the following commands:
 
 ```
-$ yarn add
+$ yarn
 $ yarn test
 
 ```
 
+## Run the application
 
+```
+$ yarn test
 
+```
 
+### Gauge commands to run tests  -
 
+To run single specs 
 
+```
+gauge run <filename>
 
+```
+
+To run all specs serially
+
+```
+gauge run specs/
+
+```
+
+To run all the specs in parallel
+
+```
+gauge run -p specs/
+
+```
