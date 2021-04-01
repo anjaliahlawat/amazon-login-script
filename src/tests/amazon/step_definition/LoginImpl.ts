@@ -1,14 +1,10 @@
-const assert = require("assert");
+import * as assert from "assert";
 
-const AmazonLoginPage = require("../pages/AmazonLoginPage");
-const PageWrapper = require("../../../lib/PageWrapper");
+import AmazonLoginPage from "../pages/AmazonLoginPage";
+import PageWrapper from "../../../lib/PageWrapper";
 
-let amazonLogin = {};
-let pageWrapper = {};
-
-// --------------------------
-// Gauge step implementations
-// --------------------------
+let amazonLogin: AmazonLoginPage;
+let pageWrapper: PageWrapper;
 
 beforeSpec(async () => {
   const page = gauge.dataStore.specStore.get("page");
@@ -21,7 +17,7 @@ step("Open amazon website", async () => {
   await amazonLogin.signIn();
 });
 
-step("Enter username as <user>", async (user) => {
+step("Enter username as <user>", async (user: string) => {
   await amazonLogin.setUsername(user);
   await amazonLogin.clickToContinue();
 });
@@ -34,11 +30,11 @@ step("Click to sign in", async () => {
   await amazonLogin.clickToSignIn();
 });
 
-step("Verify if final url is <url>", async (url) => {
+step("Verify if final url is <url>", async (url: string) => {
   const actualUrl = await pageWrapper.getUrl();
   assert.ok(url === actualUrl);
 });
 
-step("Verify text <text> label is visible", async (text) => {
+step("Verify text <text> label is visible", async (text: string) => {
   assert.ok(await pageWrapper.checkIfTextExist(text));
 });

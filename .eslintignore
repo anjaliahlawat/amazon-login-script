@@ -6,3 +6,6 @@ reports
 
 #env setup by gauge
 env
+
+#js build out dir
+build

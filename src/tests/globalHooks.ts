@@ -1,9 +1,11 @@
-const PageWrapper = require("../lib/PageWrapper");
-const Setup = require("./Setup");
+import { Page } from "puppeteer";
 
-let setup = {};
-let page = {};
-let pageWrapper = {};
+import PageWrapper from "../lib/PageWrapper";
+import Setup from "./Setup";
+
+let setup: Setup;
+let pageWrapper: PageWrapper;
+let page: Page;
 
 beforeSuite(async () => {
   setup = new Setup();
@@ -11,12 +13,12 @@ beforeSuite(async () => {
   gauge.dataStore.specStore.put("page", page);
 });
 
-afterSpec(async (context) => {
+afterSpec(async (context: any) => {
   const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
   if (specification.isFailed) await pageWrapper.takeScreenShot();
 });
 
 afterSuite(async () => {
-  await setup.cleanUp();
+  await setup.cleanup();
 });
