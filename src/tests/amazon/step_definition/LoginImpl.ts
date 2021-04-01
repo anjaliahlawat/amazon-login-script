@@ -17,13 +17,9 @@ step("Open amazon website", async () => {
   await amazonLogin.signIn();
 });
 
-step("Enter username as <user>", async (user) => {
+step("Enter username as <user>", async (user: string) => {
   await amazonLogin.setUsername(user);
   await amazonLogin.clickToContinue();
-});
-
-step("Enter password", async () => {
-  await amazonLogin.setPassword();
 });
 
 step("Enter password", async () => {
@@ -34,11 +30,11 @@ step("Click to sign in", async () => {
   await amazonLogin.clickToSignIn();
 });
 
-step("Verify if final url is <url>", async (url) => {
+step("Verify if final url is <url>", async (url: string) => {
   const actualUrl = await pageWrapper.getUrl();
   assert.ok(url === actualUrl);
 });
 
-step("Verify text <text> label is visible", async (text) => {
+step("Verify text <text> label is visible", async (text: string) => {
   assert.ok(await pageWrapper.checkIfTextExist(text));
 });

@@ -13,7 +13,7 @@ beforeSuite(async () => {
   gauge.dataStore.specStore.put("page", page);
 });
 
-afterSpec(async (context) => {
+afterSpec(async (context: any) => {
   const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
   if (specification.isFailed) await pageWrapper.takeScreenShot();

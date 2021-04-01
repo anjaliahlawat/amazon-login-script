@@ -17,11 +17,11 @@ step("Open amazon login page", async () => {
   await amazonLogin.signIn();
 });
 
-step("Enter username <user>", async (user) => {
+step("Enter username <user>", async (user: string) => {
   await amazonLogin.setUsername(user);
   await amazonLogin.clickToContinue();
 });
 
-step("Check if username <user> is visible", async (user) => {
+step("Check if username <user> is visible", async (user: string) => {
   assert.ok(await pageWrapper.checkIfTextExist(user));
 });

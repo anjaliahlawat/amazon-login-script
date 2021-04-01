@@ -16,7 +16,7 @@ export default class AmazonLoginPage {
   }
 
   async visitAmazonHome(): Promise<void> {
-    await this.page.goto(process.env.AMAZON_URL, {
+    await this.page.goto(process.env.AMAZON_URL!, {
       waitUntil: "networkidle0",
     });
   }
@@ -30,7 +30,7 @@ export default class AmazonLoginPage {
   }
 
   async setPassword(): Promise<void> {
-    await this.page.type("#ap_password", process.env.SECRET_KEY);
+    await this.page.type("#ap_password", process.env.SECRET_KEY!);
   }
 
   async clickToContinue(): Promise<void> {

@@ -8,3 +8,4 @@ declare const afterScenario: any;
 declare const afterSpec: any;
 declare const afterSuite: any;
 declare const afterStep: any;
+declare module "uuid";
