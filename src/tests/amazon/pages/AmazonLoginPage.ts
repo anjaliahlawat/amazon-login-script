@@ -1,40 +1,43 @@
-const dotenv = require("dotenv");
+import * as dotenv from "dotenv";
 
 import PageWrapper from "../../../lib/PageWrapper";
+import pageType from "../../../lib/Types";
 
 dotenv.config();
 
 export default class AmazonLoginPage {
-  page: any;
-  pageWrapper: any;
-  constructor(page : Object) {
+  page: pageType;
+
+  pageWrapper: PageWrapper;
+
+  constructor(page: pageType) {
     this.page = page;
     this.pageWrapper = new PageWrapper(page);
   }
 
-  async visitAmazonHome() {
+  async visitAmazonHome(): Promise<void> {
     await this.page.goto(process.env.AMAZON_URL, {
       waitUntil: "networkidle0",
     });
   }
 
-  async signIn() {
+  async signIn(): Promise<void> {
     await this.pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
   }
 
-  async setUsername(username) {
+  async setUsername(username: string): Promise<void> {
     await this.page.type("#ap_email", username);
   }
 
-  async setPassword() {
+  async setPassword(): Promise<void> {
     await this.page.type("#ap_password", process.env.SECRET_KEY);
   }
 
-  async clickToContinue() {
+  async clickToContinue(): Promise<void> {
     await this.pageWrapper.clickAndWaitForNavigation("#continue");
   }
 
-  async clickToSignIn() {
+  async clickToSignIn(): Promise<void> {
     await this.pageWrapper.clickAndWaitForNavigation("#signInSubmit");
   }
-};
+}
