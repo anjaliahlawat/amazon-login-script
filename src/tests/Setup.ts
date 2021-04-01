@@ -1,10 +1,10 @@
-import * as puppeteer from "puppeteer";
+import { Browser, launch, Page } from "puppeteer";
 
 export default class Setup {
-  browser!: puppeteer.Browser;
+  browser!: Browser;
 
-  async createPage(): Promise<puppeteer.Page> {
-    this.browser = await puppeteer.launch({
+  async createPage(): Promise<Page> {
+    this.browser = await launch({
       timeout: +process.env.PUPPETEER_TIMEOUT!,
     });
     return this.browser.newPage();
