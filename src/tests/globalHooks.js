@@ -1,5 +1,5 @@
 const PageWrapper = require("../lib/PageWrapper");
-var Setup = require("./Setup")
+const Setup = require("./Setup");
 
 let setup = {};
 let page = {};
