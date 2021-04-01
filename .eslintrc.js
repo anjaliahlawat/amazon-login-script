@@ -3,8 +3,13 @@ const WARNING = 1;
 const ERROR = 2;
 
 module.exports = {
-  extends: ["airbnb-base", "plugin:prettier/recommended"],
-  plugins: ["prettier"],
+  extends: [
+    "airbnb-base",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  plugins: ["prettier", "@typescript-eslint"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 9,
   },
@@ -12,7 +17,16 @@ module.exports = {
     node: true,
     jest: true,
   },
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".ts"],
+      },
+    },
+  },
   rules: {
+    "import/extensions": [OFF, "never"],
+    "no-underscore-dangle": OFF,
     "prettier/prettier": ERROR,
     "max-len": [WARNING, { code: 100 }],
     "no-console": WARNING,

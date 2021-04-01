@@ -5,10 +5,9 @@
         "emitDecoratorMetadata": true,
         "target": "es6",
         "moduleResolution": "node",
+        "outDir": "./build",
     },
-    "exclude": [
-        "node_modules",
-        "reports",
-        "webpack.config.js"
-    ]
+    "include": [
+        "./src/**/*",
+    ],
 }

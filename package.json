@@ -2,7 +2,7 @@
   "name": "gauge-js-template",
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
-    "test": "./node_modules/.bin/gauge run -p specs/",
+    "test": " .node_modules/.bin/tsc && ./node_modules/.bin/gauge run -p specs/",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix"
   },
@@ -16,6 +16,8 @@
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
     "@commitlint/config-conventional": "^12.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.19.0",
+    "@typescript-eslint/parser": "^4.19.0",
     "awesome-typescript-loader": "^5.2.1",
     "eslint": "^7.22.0",
     "eslint-config-airbnb": "^18.2.1",
