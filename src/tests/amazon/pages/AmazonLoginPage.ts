@@ -1,16 +1,16 @@
 import * as dotenv from "dotenv";
+import { Page } from "puppeteer";
 
 import PageWrapper from "../../../lib/PageWrapper";
-import pageType from "../../../lib/Types";
 
 dotenv.config();
 
 export default class AmazonLoginPage {
-  page: pageType;
+  page: Page;
 
   pageWrapper: PageWrapper;
 
-  constructor(page: pageType) {
+  constructor(page: Page) {
     this.page = page;
     this.pageWrapper = new PageWrapper(page);
   }

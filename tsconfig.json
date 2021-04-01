@@ -1,7 +1,6 @@
 {
     "compilerOptions": {
         "allowJs": true,
-        "experimentalDecorators": true,
         "target": "es6",
         "moduleResolution": "node",
         "outDir": "./build",

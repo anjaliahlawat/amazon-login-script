@@ -1,10 +1,10 @@
+import { Page } from "puppeteer";
 import * as uniqueId from "uuid";
-import pageType from "./Types";
 
 export default class PageWrapper {
-  page: pageType;
+  page: Page;
 
-  constructor(page: pageType) {
+  constructor(page: Page) {
     this.page = page;
   }
 

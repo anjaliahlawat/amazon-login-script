@@ -1,39 +1,24 @@
-import {
-  BeforeSuite,
-  AfterSuite,
-  AfterSpec,
-  DataStoreFactory,
-  DataStore,
-} from "gauge-ts";
+import { Page } from "puppeteer";
 
 import PageWrapper from "../lib/PageWrapper";
 import Setup from "./Setup";
-import pageType from "../lib/Types";
 
-export default class GlobalHooks {
-  setup: Setup;
+let setup: Setup;
+let pageWrapper: PageWrapper;
+let page: Page;
 
-  page: pageType;
+beforeSuite(async () => {
+  setup = new Setup();
+  page = await setup.createPage();
+  gauge.dataStore.specStore.put("page", page);
+});
 
-  pageWrapper: PageWrapper;
+afterSpec(async (context) => {
+  const specification = context.currentSpec;
+  pageWrapper = new PageWrapper(page);
+  if (specification.isFailed) await pageWrapper.takeScreenShot();
+});
 
-  @BeforeSuite()
-  public async beforeSuite(): Promise<void> {
-    this.setup = new Setup();
-    this.page = await this.setup.createPage();
-    const specStore: DataStore = DataStoreFactory.getSpecDataStore();
-    specStore.put("page", this.page);
-  }
-
-  @AfterSpec()
-  public async afterSpec(context: { currentSpec }): Promise<void> {
-    const specification = context.currentSpec;
-    this.pageWrapper = new PageWrapper(this.page);
-    if (specification.isFailed) await this.pageWrapper.takeScreenShot();
-  }
-
-  @AfterSuite()
-  public async afterSuite(): Promise<void> {
-    await this.setup.cleanup();
-  }
-}
+afterSuite(async () => {
+  await setup.cleanup();
+});

@@ -1,13 +1,9 @@
 import * as puppeteer from "puppeteer";
-import pageType from "../lib/Types";
 
 export default class Setup {
-  browser: {
-    newPage;
-    close: () => void;
-  };
+  browser: puppeteer.Browser;
 
-  async createPage(): Promise<pageType> {
+  async createPage(): Promise<puppeteer.Page> {
     this.browser = await puppeteer.launch({
       timeout: +process.env.PUPPETEER_TIMEOUT,
     });
