@@ -7,7 +7,7 @@ import {
 } from "gauge-ts";
 
 import PageWrapper from "../lib/PageWrapper";
-import Setup from "./setup";
+import Setup from "./Setup";
 import pageType from "../lib/Types";
 
 export default class GlobalHooks {

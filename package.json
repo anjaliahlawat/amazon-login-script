@@ -6,6 +6,12 @@
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint --edit $HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
     "@getgauge/cli": "^1.1.7",
     "dotenv": "^8.2.0",
