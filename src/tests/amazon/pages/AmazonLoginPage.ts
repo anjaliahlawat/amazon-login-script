@@ -25,12 +25,12 @@ export default class AmazonLoginPage {
     await this.pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
   }
 
-  async setUsername(username: string): Promise<void> {
-    await this.page.type("#ap_email", username);
+  async setUsername(): Promise<void> {
+    await this.page.type("#ap_email", process.env.AMAZON_USERNAME!);
   }
 
   async setPassword(): Promise<void> {
-    await this.page.type("#ap_password", process.env.SECRET_KEY!);
+    await this.page.type("#ap_password", process.env.AMAZON_PASSWORD!);
   }
 
   async clickToContinue(): Promise<void> {
