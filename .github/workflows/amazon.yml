@@ -5,7 +5,11 @@ name: Qa login script
 
 on:
   push:
-    branches: [ disabled ]
+    branches: [ hands-on/#46-env-var ]
+
+env:
+  AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
+  AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
 
 jobs:
   build:
@@ -25,8 +29,5 @@ jobs:
         node-version: ${{ matrix.node-version }}   
     - name: Setup
       run: mv .env.sample .env && yarn  
-      env:
-        AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
-        AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
     - name: Running At's
       run: yarn test
