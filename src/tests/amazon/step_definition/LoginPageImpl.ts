@@ -17,8 +17,8 @@ step("Open amazon login page", async () => {
   await amazonLogin.signIn();
 });
 
-step("Enter username <user>", async (user: string) => {
-  await amazonLogin.setUsername(user);
+step("Enter amazon username", async () => {
+  await amazonLogin.setUsername();
   await amazonLogin.clickToContinue();
 });
 

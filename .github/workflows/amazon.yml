@@ -26,6 +26,7 @@ jobs:
     - name: Setup
       run: mv .env.sample .env && yarn  
       env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
+        AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
     - name: Running At's
       run: yarn test
