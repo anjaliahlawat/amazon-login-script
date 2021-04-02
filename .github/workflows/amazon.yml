@@ -25,7 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}   
     - name: Setup
       run: mv .env.sample .env && yarn
-    - name: Secret access  
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
     - name: Running At's
