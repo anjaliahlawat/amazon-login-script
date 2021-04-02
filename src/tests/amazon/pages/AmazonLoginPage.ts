@@ -26,12 +26,10 @@ export default class AmazonLoginPage {
   }
 
   async setUsername(): Promise<void> {
-    console.log(process.env.AMAZON_USERNAME!);
     await this.page.type("#ap_email", process.env.AMAZON_USERNAME!);
   }
 
   async setPassword(): Promise<void> {
-    console.log(process.env.AMAZON_PASSWORD!);
     await this.page.type("#ap_password", process.env.AMAZON_PASSWORD!);
   }
 
