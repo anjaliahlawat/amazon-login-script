@@ -30,6 +30,7 @@ export default class AmazonLoginPage {
   }
 
   async setPassword(): Promise<void> {
+    console.log(process.env.SECRET_KEY);
     await this.page.type("#ap_password", process.env.SECRET_KEY!);
   }
 
