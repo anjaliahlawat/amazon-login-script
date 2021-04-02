@@ -30,10 +30,6 @@ export default class AmazonLoginPage {
   }
 
   async setPassword(): Promise<void> {
-    // eslint-disable-next-line no-restricted-syntax
-    for (const [key, value] of Object.entries(process.env)) {
-      console.log(key, value);
-    }
     await this.page.type("#ap_password", process.env.SECRET_KEY!);
   }
 
