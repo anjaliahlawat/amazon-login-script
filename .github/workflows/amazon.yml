@@ -8,6 +8,10 @@ on:
     branches: [ actions ]
 
 jobs:
+  env:
+    AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
+    AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
+
   build:
 
     runs-on: ubuntu-20.04
@@ -25,8 +29,5 @@ jobs:
         node-version: ${{ matrix.node-version }}   
     - name: Setup
       run: mv .env.sample .env && yarn  
-      env:
-        AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
-        AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
     - name: Running At's
       run: yarn test
