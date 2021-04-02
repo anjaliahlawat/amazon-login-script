@@ -5,4 +5,4 @@ Automated testing to check if login page opened correctly
 
 * Open amazon login page
 * Enter amazon username
-* Check if username "+919654081639" is visible
+* Check if username is visible

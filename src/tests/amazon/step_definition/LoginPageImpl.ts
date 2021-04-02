@@ -22,6 +22,8 @@ step("Enter amazon username", async () => {
   await amazonLogin.clickToContinue();
 });
 
-step("Check if username <user> is visible", async (user: string) => {
-  assert.ok(await pageWrapper.checkIfTextExist(user));
+step("Check if username is visible", async () => {
+  assert.ok(
+    await pageWrapper.checkIfTextExist(`+${process.env.AMAZON_USERNAME!}`)
+  );
 });

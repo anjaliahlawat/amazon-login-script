@@ -35,6 +35,8 @@ step("Verify if final url is <url>", async (url: string) => {
   assert.ok(url === actualUrl);
 });
 
-step("Verify text <text> label is visible", async (text: string) => {
-  assert.ok(await pageWrapper.checkIfTextExist(text));
+step("Verify if label is visible", async () => {
+  assert.ok(
+    await pageWrapper.checkIfTextExist(`Hi, ${process.env.AMAZON_LABEL!}`)
+  );
 });
