@@ -31,14 +31,17 @@ export default class AmazonLoginPage {
   }
 
   async setPassword(): Promise<void> {
+    console.log("set password");
     await this.page.type("#ap_password", process.env.AMAZON_PASSWORD!);
   }
 
   async clickToContinue(): Promise<void> {
+    console.log("click to continue");
     await this.pageWrapper.clickAndWaitForNavigation("#continue");
   }
 
   async clickToSignIn(): Promise<void> {
+    console.log("click to sign in");
     await this.pageWrapper.clickAndWaitForNavigation("#signInSubmit");
   }
 }
