@@ -29,8 +29,5 @@ jobs:
         node-version: ${{ matrix.node-version }}   
     - name: Setup
       run: mv .env.sample .env && yarn  
-    - name: Test env
-      if: env.AMAZON_USERNAME == '9654081639'
-      run: echo "got the env"
     - name: Running At's
       run: yarn test

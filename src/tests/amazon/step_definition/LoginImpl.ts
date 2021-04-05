@@ -27,6 +27,10 @@ step("Enter password", async () => {
 });
 
 step("Click to sign in", async () => {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const key of Object.keys(process.env)) {
+    console.log(key);
+  }
   await amazonLogin.clickToSignIn();
 });
 
