@@ -23,6 +23,7 @@ step("Enter amazon username", async () => {
 });
 
 step("Check if username is visible", async () => {
+  console.log(process.env.AMAZON_USERNAME);
   assert.ok(
     await pageWrapper.checkIfTextExist(`+${process.env.AMAZON_USERNAME!}`)
   );

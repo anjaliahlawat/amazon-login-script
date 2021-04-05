@@ -32,6 +32,7 @@ step("Click to sign in", async () => {
 
 step("Verify if final url is <url>", async (url: string) => {
   const actualUrl = await pageWrapper.getUrl();
+  console.log(actualUrl);
   assert.ok(url === actualUrl);
 });
 
