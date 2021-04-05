@@ -10,7 +10,7 @@ export default class PageWrapper {
 
   async clickAndWaitForNavigation(id: string): Promise<void> {
     await Promise.all([
-      this.page.waitForNavigation(),
+      this.page.waitForNavigation({ waitUntil: "networkidle0" }),
       await this.page.click(id),
     ]);
   }
