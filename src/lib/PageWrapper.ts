@@ -1,5 +1,5 @@
 import { Page } from "puppeteer";
-import { uniqueId } from "uuid";
+import { v4 as uniqueId } from "uuid";
 
 export default class PageWrapper {
   page: Page;
