@@ -26,6 +26,7 @@ export default class AmazonLoginPage {
   }
 
   async setUsername(): Promise<void> {
+    console.log("set username");
     await this.page.type("#ap_email", process.env.AMAZON_USERNAME!);
   }
 
