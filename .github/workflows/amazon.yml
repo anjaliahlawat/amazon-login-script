@@ -34,5 +34,5 @@ jobs:
     - name: Setup artifacts dir
       uses: actions/upload-artifact@v2
       with:
-        name: code-coverage-report
-        path: /home/runner/work/amazon-login-script/amazon-login-script/reports/html-report/index.html
+        name: test-case-artifact
+        path: reports/html-report/images/*.png
