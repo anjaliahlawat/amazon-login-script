@@ -12,10 +12,6 @@ export default class PageWrapper {
     this.page = page;
   }
 
-  async sleep(waitTimeInMilliSeconds: number): Promise<void> {
-    await this.page.waitForTimeout(waitTimeInMilliSeconds);
-  }
-
   private async waitForElement(
     selector: string,
     options: WaitForSelectorOptions = {}
@@ -79,7 +75,7 @@ export default class PageWrapper {
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
     await this.page.screenshot({
-      path: `reports/html-report/images/${name}.png`,
+      path: `./reports/html-report/${name}.png`,
     });
   }
 }
