@@ -31,8 +31,9 @@ jobs:
       run: mv .env.sample .env && yarn  
     - name: Running At's
       run: yarn run test
-    - name: Setup artifacts dir
+    - name: Artifacts on failure
       uses: actions/upload-artifact@v2
+      if: failure()
       with:
         name: test-case-artifact
         path: reports/
