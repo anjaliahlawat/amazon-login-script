@@ -27,7 +27,7 @@ export default class PageWrapper {
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
     await this.page.screenshot({
-      path: `reports/html-report/images/${name}.png`,
+      path: `./reports/html-report/images/${name}.png`,
     });
   }
 }
