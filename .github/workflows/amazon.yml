@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-case-artifact
-        path: reports/html-report/images/*.png
+        path: ~/reports/html-report/images/*.png
