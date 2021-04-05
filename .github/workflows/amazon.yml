@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: code-coverage-report
-        path: reports/screenshot/
+        path: home/runner/work/amazon-login-script/amazon-login-script/reports/screenshot/
