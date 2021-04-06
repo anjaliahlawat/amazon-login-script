@@ -76,8 +76,7 @@ export default class PageWrapper {
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
     const absPath = path.resolve("reports");
-    console.log(absPath);
-    const fullPath = path.join(absPath, `${name}.png`);
+    const fullPath = path.join(absPath, `/html-report/${name}.png`);
     await this.page.screenshot({
       path: fullPath,
     });
