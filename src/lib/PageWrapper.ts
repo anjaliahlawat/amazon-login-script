@@ -1,6 +1,7 @@
 import { ElementHandle, Page, WaitForSelectorOptions } from "puppeteer";
 import { v4 as uniqueId } from "uuid";
-import * as path from "path";
+import { join, resolve } from "path";
+import * as fs from "fs";
 
 const isElementHandle = (
   e: ElementHandle<Element> | null
@@ -75,8 +76,15 @@ export default class PageWrapper {
 
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
-    const absPath = path.resolve("reports");
-    const fullPath = path.join(absPath, `/html-report/${name}.png`);
+    const absPath = resolve("reports");
+    console.log(absPath);
+    // eslint-disable-next-line consistent-return
+    fs.mkdir(join(__dirname, "../../reports"), (err) => {
+      if (err) {
+        return console.error(err);
+      }
+    });
+    const fullPath = join(absPath, `/${name}.png`);
     await this.page.screenshot({
       path: fullPath,
     });
