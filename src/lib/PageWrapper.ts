@@ -1,5 +1,6 @@
 import { ElementHandle, Page, WaitForSelectorOptions } from "puppeteer";
 import { v4 as uniqueId } from "uuid";
+import * as path from "path";
 
 const isElementHandle = (
   e: ElementHandle<Element> | null
@@ -74,8 +75,10 @@ export default class PageWrapper {
 
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
+    const absPath = path.resolve("reports");
+    const fullPath = path.join(absPath, "/screenshots/", `${name}.png`);
     await this.page.screenshot({
-      path: `./reports/html-report/${name}.png`,
+      path: fullPath,
     });
   }
 }
