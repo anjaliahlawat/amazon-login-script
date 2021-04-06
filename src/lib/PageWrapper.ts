@@ -1,7 +1,7 @@
 import { ElementHandle, Page, WaitForSelectorOptions } from "puppeteer";
 import { v4 as uniqueId } from "uuid";
 import { join, resolve } from "path";
-import { mkdirSync, mkdir } from "fs";
+import { mkdir } from "fs";
 
 const isElementHandle = (
   e: ElementHandle<Element> | null
@@ -77,15 +77,15 @@ export default class PageWrapper {
   async createDir(dirnames: Array<string>): Promise<void> {
     let baseDir = "./";
     await Promise.all(
-      // eslint-disable-next-line array-callback-return
       dirnames.map((dirname) => {
         mkdir(baseDir + dirname, { recursive: true }, (err) => {
           if (err) {
             return console.log(err);
           }
-          return console.log("dir created");
+          return 0;
         });
         baseDir = `${baseDir + dirname}/`;
+        return 0;
       })
     );
   }

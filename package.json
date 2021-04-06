@@ -3,7 +3,7 @@
   "description": "Starter template for writing JavaScript tests for Gauge",
   "scripts": {
     "tsc": "./node_modules/.bin/tsc",
-    "test": "tsc && ./node_modules/.bin/gauge run -p specs/amazon/loggedOutHomePage.spec",
+    "test": "tsc && ./node_modules/.bin/gauge run -p specs/",
     "lint": "./node_modules/.bin/eslint .",
     "lint:fix": "./node_modules/.bin/eslint . --fix"
   },
