@@ -1,7 +1,7 @@
 import { ElementHandle, Page, WaitForSelectorOptions } from "puppeteer";
 import { v4 as uniqueId } from "uuid";
 import { join, resolve } from "path";
-import { mkdir } from "fs";
+import { mkdirSync, mkdir } from "fs";
 
 const isElementHandle = (
   e: ElementHandle<Element> | null
@@ -74,16 +74,28 @@ export default class PageWrapper {
     return this.page.url();
   }
 
+  async createDir(dirnames: Array<string>): Promise<void> {
+    let baseDir = "./";
+    await Promise.all(
+      // eslint-disable-next-line array-callback-return
+      dirnames.map((dirname) => {
+        mkdir(baseDir + dirname, { recursive: true }, (err) => {
+          if (err) {
+            return console.log(err);
+          }
+          return console.log("dir created");
+        });
+        baseDir = `${baseDir + dirname}/`;
+      })
+    );
+  }
+
   async takeScreenShot(): Promise<void> {
     const name = uniqueId();
-    const absPath = resolve("reports");
-    mkdir(join(__dirname, "../../reports"), (err) => {
-      if (err) {
-        return console.error(err);
-      }
-      return console.log("Reports dir created!");
-    });
-    const fullPath = join(absPath, `/${name}.png`);
+    const absPath = resolve(".");
+    const dirs = ["reports", "html-report", "images", "screenshots", "failed"];
+    await this.createDir(dirs);
+    const fullPath = join(absPath, ...dirs, `/${name}.png`);
     await this.page.screenshot({
       path: fullPath,
     });
