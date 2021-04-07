@@ -18,7 +18,7 @@ export default class AmazonLoginPage {
   }
 
   async visitAmazonHome(): Promise<void> {
-    await this.page.goto(AMAZON_URL!, {
+    await this.page.goto(`${AMAZON_URL}`, {
       waitUntil: "networkidle0",
     });
   }
@@ -28,11 +28,11 @@ export default class AmazonLoginPage {
   }
 
   async setUsername(): Promise<void> {
-    await this.page.type("#ap_email", AMAZON_USERNAME!);
+    await this.page.type("#ap_email", `${AMAZON_USERNAME}`);
   }
 
   async setPassword(): Promise<void> {
-    await this.page.type("#ap_password", AMAZON_PASSWORD!);
+    await this.page.type("#ap_password", `${AMAZON_PASSWORD}`);
   }
 
   async clickToContinue(): Promise<void> {
