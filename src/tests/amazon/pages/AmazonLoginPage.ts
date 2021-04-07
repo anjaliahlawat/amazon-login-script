@@ -5,6 +5,8 @@ import PageWrapper from "../../../lib/PageWrapper";
 
 dotenv.config();
 
+const { AMAZON_USERNAME, AMAZON_PASSWORD, AMAZON_URL } = process.env;
+
 export default class AmazonLoginPage {
   page: Page;
 
@@ -16,7 +18,7 @@ export default class AmazonLoginPage {
   }
 
   async visitAmazonHome(): Promise<void> {
-    await this.page.goto(process.env.AMAZON_URL!, {
+    await this.page.goto(AMAZON_URL, {
       waitUntil: "networkidle0",
     });
   }
@@ -25,12 +27,12 @@ export default class AmazonLoginPage {
     await this.pageWrapper.clickAndWaitForNavigation("#nav-link-accountList");
   }
 
-  async setUsername(username: string): Promise<void> {
-    await this.page.type("#ap_email", username);
+  async setUsername(): Promise<void> {
+    await this.page.type("#ap_email", AMAZON_USERNAME);
   }
 
   async setPassword(): Promise<void> {
-    await this.page.type("#ap_password", process.env.SECRET_KEY!);
+    await this.page.type("#ap_password", AMAZON_PASSWORD);
   }
 
   async clickToContinue(): Promise<void> {

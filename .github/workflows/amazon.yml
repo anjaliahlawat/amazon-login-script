@@ -7,6 +7,10 @@ on:
   push:
     branches: [ disabled ]
 
+env:
+  AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
+  AMAZON_PASSWORD: ${{ secrets.AMAZON_PASSWORD }}
+
 jobs:
   build:
 
@@ -25,7 +29,11 @@ jobs:
         node-version: ${{ matrix.node-version }}   
     - name: Setup
       run: mv .env.sample .env && yarn  
-      env:
-        SECRET_KEY: ${{ secrets.SECRET_KEY }}
     - name: Running At's
-      run: yarn test
+      run: yarn run test
+    - name: Artifacts on failure
+      uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: test-case-artifact
+        path: reports/
