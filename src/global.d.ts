@@ -14,5 +14,8 @@ declare namespace NodeJS {
   interface ProcessEnv {
     readonly PUPPETEER_TIMEOUT: string;
     readonly BROWSER_HEADLESS: "true" | "false" | "TRUE" | "FALSE";
+    readonly AMAZON_URL: string;
+    readonly AMAZON_USERNAME: string;
+    readonly AMAZON_PASSWORD: string;
   }
 }

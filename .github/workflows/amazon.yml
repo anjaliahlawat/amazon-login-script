@@ -5,7 +5,7 @@ name: Qa login script
 
 on:
   push:
-    branches: [ hands-on/#46-env-var ]
+    branches: [ disabled ]
 
 env:
   AMAZON_USERNAME: ${{ secrets.AMAZON_USERNAME }}
