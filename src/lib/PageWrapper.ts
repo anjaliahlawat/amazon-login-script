@@ -83,5 +83,6 @@ export default class PageWrapper {
     await this.page.screenshot({
       path: fullPath,
     });
+    gauge.message(`<a href=${fullPath}>View screenshot for failed step.</a>`);
   }
 }
