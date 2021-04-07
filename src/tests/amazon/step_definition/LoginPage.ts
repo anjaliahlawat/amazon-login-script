@@ -43,8 +43,8 @@ step("Wait for Approval in case of security check", async () => {
   );
   if (isApproveNotificationVisible) {
     console.log("Please approve the login");
-    // Request should be accepted within 2 mins
-    await pageWrapper.waitForElementToDisappearByText(notificationText, 120000);
+    // Request should be accepted within 1 mins
+    await pageWrapper.waitForElementToDisappearByText(notificationText, 60000);
     await pageWrapper.waitForElementToBeVisibleByText("Amazon Pay");
   } else {
     console.log("Not asking for 2 step verification");
@@ -53,7 +53,7 @@ step("Wait for Approval in case of security check", async () => {
 
 step("Ensure entered user name is visible", async () => {
   assert.ok(
-    await pageWrapper.isElementPresentByText(`+91${AMAZON_USERNAME}`),
+    await pageWrapper.isElementPresentByText(`${AMAZON_USERNAME}`),
     `"${AMAZON_USERNAME}" user name is not visible`
   );
 });
