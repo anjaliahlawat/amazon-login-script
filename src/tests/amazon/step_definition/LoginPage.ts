@@ -53,7 +53,7 @@ step("Wait for Approval in case of security check", async () => {
 
 step("Ensure entered user name is visible", async () => {
   assert.ok(
-    await pageWrapper.isElementPresentByText(`${AMAZON_USERNAME}`),
+    await pageWrapper.isElementPresentByText(`+91${AMAZON_USERNAME}`),
     `"${AMAZON_USERNAME}" user name is not visible`
   );
 });
