@@ -80,16 +80,13 @@ export default class PageWrapper {
     if (scrPath) {
       await createDir(scrPath);
       fullPath = join(resolve("."), scrPath, `/${name}.png`);
-      await this.page.screenshot({
-        path: fullPath,
-      });
     } else {
       const defaultScrPath = "reports/html-report/images/screenshots";
       await createDir(defaultScrPath);
       fullPath = join(resolve("."), defaultScrPath, `/${name}.png`);
-      await this.page.screenshot({
-        path: fullPath,
-      });
     }
+    await this.page.screenshot({
+      path: fullPath,
+    });
   }
 }
