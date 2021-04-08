@@ -74,14 +74,14 @@ export default class PageWrapper {
     return this.page.url();
   }
 
-  async takeScreenShot(): Promise<void> {
+  async takeScreenShot(scrPath?: string): Promise<void> {
     const name = uniqueId();
-    const absPath = resolve(".");
-    const relPath = "reports/html-report/images/screenshots/failed";
-    await createDir(relPath);
-    const fullPath = join(absPath, relPath, `/${name}.png`);
+    const screenshotDirPath =
+      scrPath || "reports/html-report/images/screenshots";
+    await createDir(screenshotDirPath);
+    const scrFullPath = join(resolve("."), screenshotDirPath, `/${name}.png`);
     await this.page.screenshot({
-      path: fullPath,
+      path: scrFullPath,
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Page } from "puppeteer";
+import { join, resolve } from "path";
 
 import PageWrapper from "../lib/PageWrapper";
 import Setup from "./Setup";
@@ -16,7 +17,16 @@ beforeSuite(async () => {
 afterSpec(async (context: any) => {
   const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
-  if (specification.isFailed) await pageWrapper.takeScreenShot();
+  if (specification.isFailed) {
+    const scrPath = "reports/html-report/images/screenshots/failed";
+    await pageWrapper.takeScreenShot(scrPath);
+    gauge.message(
+      `<a href=${join(
+        resolve("."),
+        scrPath
+      )}>View screenshot for failed step.</a>`
+    );
+  }
 });
 
 afterSuite(async () => {
