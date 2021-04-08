@@ -14,6 +14,16 @@ export default class PageWrapper {
     this.page = page;
   }
 
+  async gotoUrl(url: string): Promise<void> {
+    await this.page.goto(url, {
+      waitUntil: "networkidle0",
+    });
+  }
+
+  async typeInputText(inputFieldId: string, text: string): Promise<void> {
+    await this.page.type(inputFieldId, text);
+  }
+
   private async waitForElement(
     selector: string,
     options: WaitForSelectorOptions = {}
