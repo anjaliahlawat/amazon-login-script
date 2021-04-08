@@ -15,13 +15,25 @@ export default class PageWrapper {
   }
 
   async gotoUrl(url: string): Promise<void> {
-    await this.page.goto(url, {
-      waitUntil: "networkidle0",
-    });
+    try {
+      await this.page.goto(url, {
+        waitUntil: "networkidle0",
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
-  async typeInputText(inputFieldId: string, text: string): Promise<void> {
-    await this.page.type(inputFieldId, text);
+  async typeInputText(selector: string, text: string): Promise<void> {
+    try {
+      await this.waitForElementToAppear(selector, {
+        visible: true,
+        timeout: 60000,
+      });
+      await this.page.type(selector, text);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   private async waitForElement(
