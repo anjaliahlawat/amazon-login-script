@@ -25,14 +25,13 @@ export default class PageWrapper {
   }
 
   async typeInputText(selector: string, text: string): Promise<void> {
-    try {
-      await this.waitForElementToAppear(selector, {
-        visible: true,
-        timeout: 60000,
-      });
-      await this.page.type(selector, text);
-    } catch (err) {
-      console.log(err);
+    const elementHandle = await this.waitForElement(selector, {
+      visible: true,
+    });
+    if (isElementHandle(elementHandle)) {
+      await elementHandle.type(text);
+    } else {
+      throw new Error(`Input Element not found for selector ${selector}`);
     }
   }
 
