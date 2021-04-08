@@ -76,17 +76,12 @@ export default class PageWrapper {
 
   async takeScreenShot(scrPath?: string): Promise<void> {
     const name = uniqueId();
-    let fullPath: string;
-    if (scrPath) {
-      await createDir(scrPath);
-      fullPath = join(resolve("."), scrPath, `/${name}.png`);
-    } else {
-      const defaultScrPath = "reports/html-report/images/screenshots";
-      await createDir(defaultScrPath);
-      fullPath = join(resolve("."), defaultScrPath, `/${name}.png`);
-    }
+    const screenshotDirPath =
+      scrPath || "reports/html-report/images/screenshots";
+    await createDir(screenshotDirPath);
+    const scrFullPath = join(resolve("."), screenshotDirPath, `/${name}.png`);
     await this.page.screenshot({
-      path: fullPath,
+      path: scrFullPath,
     });
   }
 }
