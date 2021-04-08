@@ -19,8 +19,16 @@ beforeSuite(async () => {
 afterSpec(async (context: any) => {
   const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
-  if (specification.isFailed)
-    await pageWrapper.takeScreenShot(specification.isFailed);
+  if (specification.isFailed) {
+    const scrPath = "reports/html-report/images/screenshots/failed";
+    await pageWrapper.takeScreenShot(scrPath);
+    gauge.message(
+      `<a href=${join(
+        resolve("."),
+        scrPath
+      )}>View screenshot for failed step.</a>`
+    );
+  }
 });
 
 afterSuite(async () => {

@@ -74,16 +74,22 @@ export default class PageWrapper {
     return this.page.url();
   }
 
-  async takeScreenShot(addSrcInReport?: boolean): Promise<void> {
+  async takeScreenShot(scrPath?: string): Promise<void> {
     const name = uniqueId();
-    const absPath = resolve(".");
-    const relPath = "reports/html-report/images/screenshots/failed";
-    await createDir(relPath);
-    const fullPath = join(absPath, relPath, `/${name}.png`);
-    await this.page.screenshot({
-      path: fullPath,
-    });
-    if (addSrcInReport)
-      gauge.message(`<a href=${fullPath}>View screenshot for failed step.</a>`);
+    let fullPath: string;
+    if (scrPath) {
+      await createDir(scrPath);
+      fullPath = join(resolve("."), scrPath, `/${name}.png`);
+      await this.page.screenshot({
+        path: fullPath,
+      });
+    } else {
+      const defaultScrPath = "reports/html-report/images/screenshots";
+      await createDir(defaultScrPath);
+      fullPath = join(resolve("."), defaultScrPath, `/${name}.png`);
+      await this.page.screenshot({
+        path: fullPath,
+      });
+    }
   }
 }
