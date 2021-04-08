@@ -1,6 +1,5 @@
 # Logged in home page 
 
-
 ## User should be able to login to its Amazon account
 * Open amazon login page
 * Enter username
