@@ -20,7 +20,7 @@ export default class PageWrapper {
         waitUntil: "networkidle0",
       });
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   }
 
@@ -30,8 +30,8 @@ export default class PageWrapper {
         visible: true,
       });
       await elementHandle.type(text);
-    } catch (error) {
-      console.log(error);
+    } catch (err) {
+      throw new Error(err);
     }
   }
 
