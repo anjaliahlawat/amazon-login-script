@@ -4,8 +4,6 @@ import { join, resolve } from "path";
 import PageWrapper from "../lib/PageWrapper";
 import Setup from "./Setup";
 
-const { SCREENSHOT_DIR } = process.env;
-
 let setup: Setup;
 let pageWrapper: PageWrapper;
 let page: Page;
