@@ -74,7 +74,7 @@ export default class PageWrapper {
     return this.page.url();
   }
 
-  async takeScreenShot(): Promise<void> {
+  async takeScreenShot(isSpecFailed?: boolean): Promise<void> {
     const name = uniqueId();
     const absPath = resolve(".");
     const relPath = "reports/html-report/images/screenshots/failed";
@@ -83,6 +83,7 @@ export default class PageWrapper {
     await this.page.screenshot({
       path: fullPath,
     });
-    gauge.message(`<a href=${fullPath}>View screenshot for failed step.</a>`);
+    if (isSpecFailed)
+      gauge.message(`<a href=${fullPath}>View screenshot for failed step.</a>`);
   }
 }

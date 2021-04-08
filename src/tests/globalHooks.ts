@@ -1,7 +1,10 @@
 import { Page } from "puppeteer";
+import { join, resolve } from "path";
 
 import PageWrapper from "../lib/PageWrapper";
 import Setup from "./Setup";
+
+const { SCREENSHOT_DIR } = process.env;
 
 let setup: Setup;
 let pageWrapper: PageWrapper;
@@ -16,7 +19,8 @@ beforeSuite(async () => {
 afterSpec(async (context: any) => {
   const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
-  if (specification.isFailed) await pageWrapper.takeScreenShot();
+  if (specification.isFailed)
+    await pageWrapper.takeScreenShot(specification.isFailed);
 });
 
 afterSuite(async () => {
