@@ -14,7 +14,7 @@ export default class PageWrapper {
     this.page = page;
   }
 
-  async gotoUrl(url: string): Promise<void> {
+  async goTo(url: string): Promise<void> {
     try {
       await this.page.goto(url, {
         waitUntil: "networkidle0",
@@ -24,7 +24,7 @@ export default class PageWrapper {
     }
   }
 
-  async typeInputText(selector: string, text: string): Promise<void> {
+  async enterText(selector: string, text: string): Promise<void> {
     try {
       const elementHandle = await this.waitForElementToAppear(selector, {
         visible: true,

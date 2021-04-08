@@ -15,7 +15,7 @@ export default class AmazonLoginPage {
   }
 
   async visitAmazonHome(): Promise<void> {
-    await this.pageWrapper.gotoUrl(AMAZON_URL);
+    await this.pageWrapper.goTo(AMAZON_URL);
   }
 
   async signIn(): Promise<void> {
@@ -23,11 +23,11 @@ export default class AmazonLoginPage {
   }
 
   async setUsername(): Promise<void> {
-    await this.pageWrapper.typeInputText("#ap_email", AMAZON_USERNAME);
+    await this.pageWrapper.enterText("#ap_email", AMAZON_USERNAME);
   }
 
   async setPassword(): Promise<void> {
-    await this.pageWrapper.typeInputText("#ap_password", AMAZON_PASSWORD);
+    await this.pageWrapper.enterText("#ap_password", AMAZON_PASSWORD);
   }
 
   async clickToContinue(): Promise<void> {
