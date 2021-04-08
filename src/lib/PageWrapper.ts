@@ -14,6 +14,27 @@ export default class PageWrapper {
     this.page = page;
   }
 
+  async goTo(url: string): Promise<void> {
+    try {
+      await this.page.goto(url, {
+        waitUntil: "networkidle0",
+      });
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  async enterText(selector: string, text: string): Promise<void> {
+    try {
+      const elementHandle = await this.waitForElementToAppear(selector, {
+        visible: true,
+      });
+      await elementHandle.type(text);
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   private async waitForElement(
     selector: string,
     options: WaitForSelectorOptions = {}

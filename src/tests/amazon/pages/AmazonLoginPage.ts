@@ -8,19 +8,14 @@ dotenv.config();
 const { AMAZON_USERNAME, AMAZON_PASSWORD, AMAZON_URL } = process.env;
 
 export default class AmazonLoginPage {
-  page: Page;
-
   pageWrapper: PageWrapper;
 
   constructor(page: Page) {
-    this.page = page;
     this.pageWrapper = new PageWrapper(page);
   }
 
   async visitAmazonHome(): Promise<void> {
-    await this.page.goto(AMAZON_URL, {
-      waitUntil: "networkidle0",
-    });
+    await this.pageWrapper.goTo(AMAZON_URL);
   }
 
   async signIn(): Promise<void> {
@@ -28,11 +23,11 @@ export default class AmazonLoginPage {
   }
 
   async setUsername(): Promise<void> {
-    await this.page.type("#ap_email", AMAZON_USERNAME);
+    await this.pageWrapper.enterText("#ap_email", AMAZON_USERNAME);
   }
 
   async setPassword(): Promise<void> {
-    await this.page.type("#ap_password", AMAZON_PASSWORD);
+    await this.pageWrapper.enterText("#ap_password", AMAZON_PASSWORD);
   }
 
   async clickToContinue(): Promise<void> {
