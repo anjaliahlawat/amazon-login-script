@@ -183,10 +183,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@getgauge/cli@^1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@getgauge/cli/-/cli-1.1.7.tgz#9537546c362c4075e545999f0b4cbc2364b37635"
-  integrity sha512-fv3kC5SXMw3e6EvnJABInf7fw1GMYPdkYccCi9bLshln//IheUPsuds4/UiMTjlLFBw5Lrly6Im+nUMO3r0nzg==
+"@getgauge/cli@^1.1.8":
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/@getgauge/cli/-/cli-1.1.8.tgz#53089266e6252a9256f1549c1e6d00daf6fdf3ae"
+  integrity sha512-MIvGc9J9prAanuKLMIrsDz37y0cy9lBEn9nw41hwZprDFvIo4bNoHKDFL2N/4+1pfGgxWwqqGqjfaJ6Xqrx9og==
   dependencies:
     unzipper "^0.9.3"
 
