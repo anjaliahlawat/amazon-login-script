@@ -1,5 +1,5 @@
 import { Page } from "puppeteer";
-import { join, resolve } from "path";
+import { basename } from "path";
 
 import PageWrapper from "../lib/PageWrapper";
 import Setup from "./Setup";
@@ -12,23 +12,14 @@ beforeSuite(async () => {
   setup = new Setup();
   page = await setup.createPage();
   gauge.dataStore.specStore.put("page", page);
-});
-
-afterSpec(async (context: any) => {
-  const specification = context.currentSpec;
   pageWrapper = new PageWrapper(page);
-  if (specification.isFailed) {
-    const scrPath = "reports/html-report/images/screenshots/failed";
-    await pageWrapper.takeScreenShot(scrPath);
-    gauge.message(
-      `<a href=${join(
-        resolve("."),
-        scrPath
-      )}>View screenshot for failed step.</a>`
-    );
-  }
 });
 
 afterSuite(async () => {
   await setup.cleanup();
 });
+
+// Take screenshot via puppeteer and attach to HTML reports
+gauge.customScreenshotWriter = async () => {
+  return basename(await pageWrapper.takeScreenShot());
+};
